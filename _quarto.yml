@@ -6,11 +6,11 @@ execute:
   echo: true
 
 book:
-  title: "YOUR PROJECT TITLE"
+  title: "Insurance Claims"
   author:
-    - AUTHOR1 (UNI1)
-    - AUTHOR2 (UNI2)
-  repo-url: https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME
+    - Haiwen Kou (hk3283)
+    - Shan Hui (sh4477)
+  repo-url: https://github.com/aab11e6/Insurance-claims
   date: today
   page-footer:
     right: |
