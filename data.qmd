@@ -1,5 +1,81 @@
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
 # Data
 
+We identified the dataset for our project from the following link: [Mendeley Data](https://data.mendeley.com/datasets/992mh7dk9y/2). The source of the data is available at [GitHub - mwitiderrick/insurancedata](https://github.com/mwitiderrick/insurancedata/tree/master). This dataset was initially posted on GitHub by an individual contributor, and the original post can be found here: [GitHub - Insurance Claims CSV](https://github.com/mwitiderrick/insurancedata/blob/master/insurance_claims.csv).
+
+While the original post on Oracle has been removed, which limits our understanding of the exact data collection methodology, the dataset appears to have been personally compiled by the contributor. Despite these limitations, our research indicates that this dataset has been explored in various academic and practical contexts, as evidenced by its usage in projects hosted on platforms like Databricks and GitHub, which can be found at [Databricks Project](https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/4954928053318020/1058911316420443/167703932442645/latest.html) and [GitHub - Insurance Fraud Claims Detection](https://github.com/Jai-Ds/Insurance-Fraud-Claims-Detection/blob/master/README.md), respectively. These explorations suggest its high potential for academic research and application.
+
+We acknowledge that obtaining proprietary insurance information is difficult and therefore there are not many publicly available datasets. Despite the lack of detailed background on data collection, we believe that this dataset offers a valuable opportunity to apply our classroom knowledge to real-world data.
+
+As for importing the data, we downloaded it from the GitHub repository and then imported it into our local environment for analysis. We will provide a detailed description of the dataset's characteristics, including its format and dimensions, in the *Description* part.
+
+
 ## Description
+The data is in .csv format. There are 1,000 rows with 40 columns, however, the column "_c39" is all null so we will drop it before our analysis.
+
+There are 38 attributes (features) in total in the data. They can be divided into five main categories, which are **Personal and Policy Information**, **Location and Vehicle Information**, **Incident Details**, **Claim Information** and **Other Attributes**:
+
+1. **Personal and Policy Information**: It contains columns for customer characteristics such as `months_as_customer`, `age`, `policy_number`, `policy_bind_date`, `policy_state`, `policy_csl` (Combined Single Limit), `policy_deductable`, `policy_annual_premium`, and `umbrella_limit`.
+
+2. **Location and Vehicle Information**: There are details about the `insured_zip`, `incident_location`, `incident_hour_of_the_day`, as well as information about the vehicle involved like `auto_make`, `auto_model`, and `auto_year`.
+
+3. **Incident Details**: The dataset includes specific details about incidents such as `incident_date`, `incident_type`, `collision_type`, `incident_severity`, `authorities_contacted`, and whether a `police_report_available`.
+
+4. **Claim Information**: This encompasses the `total_claim_amount`, `injury_claim`, `property_claim`, `vehicle_claim`, and whether the claim was reported as fraud (`fraud_reported`).
+
+5. **Other Attributes**: Additional attributes include details about the insured like `insured_sex`, `insured_education_level`, `insured_occupation`, `insured_hobbies`, `insured_relationship`, as well as information about witnesses, bodily injuries, and other aspects related to the insurance claims.
+
+Below is what our data looks like:
+```{r}
+data <- read.csv('insurance_claims.csv', na.strings = c("?", "NA"))
+head(data)
+```
+
+
+
+## Research plan
+
+Our project will initially focus on an exploratory analysis of each category of data in the dataset, aiming to unearth potential connections among them and their relationship with insurance fraud. Then we will employ techniques such as regression analysis and Principal Component Analysis (PCA). These methods will enable us to compare and quantify the impact of different factors on the likelihood of fraud.
+
+By conducting this multi-dimensional analysis, we will leverage the dataset's comprehensive range of data - encompassing geographical trends, policy features, demographic characteristics, incident specifics, and vehicle information. This approach will not only help us identify patterns and insights in each data category but also allow us to understand the cumulative impact of these factors on insurance fraud.
+
 
 ## Missing value analysis
+In this dataset, all the missing data are represented by "?" elements, so we need to replace all "?" elements with null values. Besides, there is one column named "_c39" with all null values that can be dropped.
+
+```{r}
+data <- read.csv('insurance_claims.csv', na.strings = c("?", "NA"))
+data <- subset(data, select = -X_c39)
+```
+Then calculate the number of missing values in each column and visualize the missing data using a bar plot for an overview.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+# Count missing values
+missing_values <- sapply(data, function(x) sum(is.na(x)))
+missing_data_frame <- data.frame(column = names(missing_values), missing_count = missing_values)
+
+# Create a data frame for plotting
+missing_data_frame <- data.frame(column = names(missing_values), missing_count = missing_values)
+
+# Create the bar plot with ggplot2
+ggplot(missing_data_frame |> arrange(desc(missing_count)), aes(x = reorder(column, missing_count), y = missing_count)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +  # Reverse the coordinate system
+  xlab("Column") +
+  ylab("Number of Missing Values") +
+  ggtitle("Missing Values per Column") # Add titles and labels as needed
+```
+Obviously, there are only three columns with missing values, so we proceed to drop all the other columns and use **plot_missing** in **redav** to plot the them.
+
+```{r}
+library(redav)
+plot_missing(subset(data, select = c("police_report_available","property_damage","collision_type")), percent = FALSE)
+```
+The patterns indicated by these plots suggest that the missing data is mostly concentrated in a single variable which is illstrated by the fact that case 2 and 3 in missing pattern are significantly more than other cases.
+Missingness spreading across several variables needs to be handled carefully, as it could bias the results of any analysis performed on the dataset. Techniques such as imputation or the use of models that can handle missing data might be necessary to account for the missing values.
+
