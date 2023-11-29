@@ -30,7 +30,7 @@ In embarking on this study, our aim is to dissect the multifaceted nature of ins
 
 **Vehicle Information**: Lastly, the type or model of the vehicle involved in the insurance claim might also influence the incidence of fraud. Are luxury vehicles more associated with fraudulent claims, or are there specific models or years that seem to be more prone to fraud?
 
-Through these questions, we hope to uncover patterns and correlations that can aid in the development of more effective fraud detection tools and policies. This study is not just about identifying the 'what' of insurance fraud; it's about understanding the 'why' and 'how,' which are crucial for any meaningful intervention in this area.1
+Through these questions, we hope to uncover patterns and correlations that can aid in the development of more effective fraud detection tools and policies. This study is not just about identifying the 'what' of insurance fraud; it's about understanding the 'why' and 'how,' which are crucial for any meaningful intervention in this area.
 
 ## Background Context
 
