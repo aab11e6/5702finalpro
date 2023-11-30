@@ -6,7 +6,7 @@ The complexity of insurance fraud lies in its diverse manifestations. It isn't c
 
 Furthermore, insurance fraud is not driven by a single factor. It is influenced by a myriad of elements such as economic conditions, the intricacies of insurance policies, individual motivations, and opportunities to exploit system vulnerabilities. This interplay of factors contributes to the complexity of detecting and preventing fraud, requiring a nuanced and multifaceted approach.
 
-In summary, understanding and addressing insurance fraud is crucial for maintaining the integrity and sustainability of the insurance sector. It is not just about mitigating financial losses but also about ensuring fairness and trustworthiness in a system that millions rely on for risk management and security.
+All in all, understanding and addressing insurance fraud is crucial for maintaining the integrity and sustainability of the insurance sector. It is not just about mitigating financial losses but also about ensuring fairness and trustworthiness in a system that millions rely on for risk management and security.
 
 ## Rationale for Topic Selection
 
