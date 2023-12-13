@@ -1,1 +1,362 @@
 # Results
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(ggplot2)
+library(choroplethr)
+
+# data preprocess 
+data <- read.csv('insurance_claims.csv', na.strings = c("?", "NA"))
+data <- subset(data, select = -X_c39)
+```
+
+## Geographical Trends
+
+Here, we primarily focus on two variables: 'policy_state,' which means the state where the insurance policy was issued; and 'incident_state,' which means the state where the incident occurred.
+
+```{r}
+# 将 'fraud_reported' 转换为数值
+data$fraud_reported_numeric <- ifelse(data$fraud_reported == "Y", 1, 0)
+
+# 按 'incident_state' 分组并计算欺诈率
+fraud_rate_by_state <- aggregate(fraud_reported_numeric ~ incident_state, data, mean)
+
+# 将欺诈率转换为百分比
+fraud_rate_by_state$fraud_rate <- fraud_rate_by_state$fraud_reported_numeric * 100
+
+# 移除不再需要的列
+fraud_rate_by_state$fraud_reported_numeric <- NULL
+
+# 创建州名缩写与全称对应的映射
+state_abbreviations <- c("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
+                         "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+                         "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+                         "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+                         "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY")
+state_names <- c("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
+                 "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho",
+                 "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine",
+                 "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi",
+                 "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey",
+                 "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
+                 "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
+                 "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia",
+                 "Washington", "West Virginia", "Wisconsin", "Wyoming")
+
+state_map <- setNames(state_names, state_abbreviations)
+
+# 转换 'incident_state' 列中的缩写为全称
+fraud_rate_by_state$incident_state <- tolower(state_map[fraud_rate_by_state$incident_state])
+
+# 重命名列
+names(fraud_rate_by_state) <- c("region", "value")
+```
+
+```{r}
+library(choroplethr)
+library(ggplot2)
+library(RColorBrewer)
+
+# 创建州级地图并更改颜色方案
+map <- state_choropleth(fraud_rate_by_state, 
+                        title = "Fraud Rate by State", 
+                        legend = "Fraud Rate") +
+       scale_fill_brewer(palette = "Reds", name = "Fraud Rate")
+
+# 调整地图的显示范围以仅包括特定州
+# 这里的数值是示例，您可能需要根据需要进行调整
+map + coord_fixed(xlim = c(-85, -70), ylim = c(30, 45))
+```
+
+```{r}
+# 将 'fraud_reported' 转换为数值
+data$fraud_reported_numeric <- ifelse(data$fraud_reported == "Y", 1, 0)
+
+# 按 'incident_state' 分组并计算欺诈率
+fraud_rate_by_state <- aggregate(fraud_reported_numeric ~ policy_state, data, mean)
+
+# 将欺诈率转换为百分比
+fraud_rate_by_state$fraud_rate <- fraud_rate_by_state$fraud_reported_numeric * 100
+
+# 移除不再需要的列
+fraud_rate_by_state$fraud_reported_numeric <- NULL
+
+# 转换 'incident_state' 列中的缩写为全称
+fraud_rate_by_state$policy_state <- tolower(state_map[fraud_rate_by_state$policy_state])
+
+# 重命名列
+names(fraud_rate_by_state) <- c("region", "value")
+
+# 创建州级地图并更改颜色方案
+map <- state_choropleth(fraud_rate_by_state, 
+                        title = "Fraud Rate by State", 
+                        legend = "Fraud Rate") +
+       scale_fill_brewer(palette = "Reds", name = "Fraud Rate")
+
+# 调整地图的显示范围以仅包括特定州
+# 这里的数值是示例，您可能需要根据需要进行调整
+map + coord_fixed(xlim = c(-95, -80), ylim = c(36, 45))
+```
+
+```{r}
+library(ggalluvial)
+library(alluvial)
+
+selected_data <- data %>% 
+  select(policy_state, incident_state, fraud_reported)
+
+# 计算每种组合的频率
+frequency_data <- selected_data %>% 
+  count(policy_state, incident_state, fraud_reported)
+
+# 创建流图
+ggplot(data = frequency_data, 
+       aes(axis1 = policy_state, axis2 = incident_state, axis3 = fraud_reported, y = n)) +
+  geom_alluvium(aes(fill = fraud_reported)) +
+  geom_stratum() +
+  geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+  scale_x_discrete(limits = c("Policy State", "Incident State", "Fraud Reported")) + # 改变横坐标名称
+  theme_minimal() +
+  theme(
+    axis.title.y = element_blank(), # 删除 y 轴标题
+    axis.text.y = element_blank(), # 删除 y 轴文本
+    axis.ticks.y = element_blank(), # 删除 y 轴刻度
+    panel.border = element_blank(), # 删除边框
+    panel.grid.major = element_blank(), # 删除主要网格线
+    panel.grid.minor = element_blank() # 删除次要网格线
+  ) +
+  labs(title = "Relationships among Policy State, Incident State, and Fraud Reported",
+       x = "") # 删除 x 轴标题
+
+```
+没什么规律，五湖四海呈现相同特征
+
+## Incident Details
+
+### capital situation
+
+we mainly focus on two variables: 'capital-gains,' which means the capital gains of the insured individual; and 'capital-loss,' which means the capital losses of the insured individual.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+# 假设 data 是您的原始数据集
+# 添加一列作为个体或分组的标识符
+data <- data %>%
+  mutate(id = row_number())
+
+# 为了绘制斜率图，我们需要将数据转换为长格式
+long_data <- data %>%
+  select(id, capital.loss, capital.gains) %>%
+  pivot_longer(cols = -id, names_to = "variable", values_to = "value")
+
+# 绘制斜率图，为每个 id 绘制一条线
+ggplot(long_data, aes(x = variable, y = value, group = id)) +
+  geom_line(alpha = 0.06) +
+  theme_minimal() +
+  labs(title = "Slope Graph for Capital Loss and Capital Gain",
+       x = "",
+       y = "Value")
+
+```
+
+### Time
+
+Here, we mainly focus on two variables: 'incident_date,' which means the date of the incident; and 'incident_hour_of_the_day,' which means the hour of the day when the incident occurred.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(lubridate)
+
+# 转换 incident_date 到 Date 类型
+data$incident_date <- as.Date(data$incident_date, format = "%m/%d/%Y")
+
+# 标记欺诈的事件
+data$fraud_flag <- ifelse(data$fraud_reported == 'Y', 1, 0)
+
+# 计算每个日期的欺诈率
+fraud_rate_by_date <- data %>%
+  group_by(incident_date) %>%
+  summarise(fraud_rate = mean(fraud_flag))
+
+# 绘制密度图
+ggplot(fraud_rate_by_date, aes(x = incident_date, y = fraud_rate * 100)) +
+  geom_smooth(method = "loess", se = FALSE, span = 0.3) + 
+  theme_minimal() +
+  labs(title = "Fraud Rate by Incident Date",
+       x = "Incident Date",
+       y = "Fraud Rate(%)")
+```
+
+
+
+```{r}
+# 计算每个小时的欺诈率
+fraud_rate_by_hour <- data %>%
+  group_by(incident_hour_of_the_day) %>%
+  summarise(fraud_rate = mean(fraud_flag) * 100)  # 转换为百分比
+
+# 绘制欺诈率随小时变化的图
+ggplot(fraud_rate_by_hour, aes(x = incident_hour_of_the_day, y = fraud_rate)) +
+  geom_smooth(method = "loess", se = FALSE, span = 0.3) +  # 添加平滑趋势线
+  theme_minimal() +
+  labs(title = "Fraud Rate by Incident Hour of the Day",
+       x = "Incident Hour of the Day",
+       y = "Fraud Rate(%)")
+```
+
+### Type
+
+Focus on three variables: 'incident_type,' which is the type of the incident; 'collision_type,' which is the type of collision, if applicable; and 'incident_severity,' which is the severity of the incident.
+
+```{r, fig.height=6}
+data1 <- subset(data, !is.na(incident_type) & !is.na(collision_type) & !is.na(incident_severity) & !is.na(fraud_reported))
+
+vcd::mosaic(fraud_reported ~ incident_type + collision_type + incident_severity, data1, direction = c('h', 'h', 'v'), main = "Association between Age.Groups and Subchapter")
+```
+
+```{r}
+selected_data <- data1 %>% 
+  select(incident_type, collision_type, incident_severity, fraud_reported)
+
+# 计算每种组合的频率
+frequency_data <- selected_data %>% 
+  count(incident_type, collision_type, incident_severity, fraud_reported)
+
+# 创建流图
+ggplot(data = frequency_data, 
+       aes(axis1 = incident_type, axis2 = collision_type, axis3 = incident_severity, axis4 = fraud_reported, y = n)) +
+  geom_alluvium(aes(fill = fraud_reported)) +
+  geom_stratum() +
+  geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+  scale_x_discrete(limits = c("incident_type", "collision_type", "incident_severity", "fraud_reported")) + # 改变横坐标名称
+  theme_minimal() +
+  theme(
+    axis.title.y = element_blank(), # 删除 y 轴标题
+    axis.text.y = element_blank(), # 删除 y 轴文本
+    axis.ticks.y = element_blank(), # 删除 y 轴刻度
+    panel.border = element_blank(), # 删除边框
+    panel.grid.major = element_blank(), # 删除主要网格线
+    panel.grid.minor = element_blank() # 删除次要网格线
+  ) +
+  labs(title = "Relationships among Policy State, Incident State, and Fraud Reported",
+       x = "") # 删除 x 轴标题
+```
+
+### damage and trustworthiness
+
+This time we focus on four variables to explore their relationship with fraud: 'property_damage', which indicates if there was any property damage; 'bodily_injuries', the number of bodily injuries in the incident; 'police_report_available', which indicates if a police report is available; and 'witnesses', the number of witnesses to the incident.
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+# Assuming your data is already read and named 'data'
+# Convert the fraud_reported to a numerical flag
+
+data1 <- subset(data, !is.na(property_damage) & !is.na(bodily_injuries))
+
+data1$fraud_reported_flag <- ifelse(data1$fraud_reported == "Y", 1, 0)
+
+# Group by 'property_damage' and 'bodily_injuries' to calculate the mean fraud rate
+fraud_rates <- data1 %>%
+  group_by(property_damage, bodily_injuries) %>%
+  summarise(fraud_rate = mean(fraud_reported_flag, na.rm = TRUE)) %>%
+  ungroup()
+
+# Create the heatmap
+p1 <- ggplot(fraud_rates, aes(x = property_damage, y = bodily_injuries, fill = fraud_rate)) +
+  geom_tile() + 
+  scale_fill_gradient(low = "white", high = "red", labels = scales::percent_format()) +
+  theme_minimal() +
+  labs(x = "Bodily Injuries", y = "Property Damage", fill = "Fraud Rate") +
+  geom_text(aes(label = scales::percent(fraud_rate)), size = 4, colour = "black")
+
+```
+
+```{r}
+library(patchwork)
+
+data2 <- subset(data, !is.na(police_report_available) & !is.na(witnesses))
+
+data2$fraud_reported_flag <- ifelse(data2$fraud_reported == "Y", 1, 0)
+
+# Group by 'property_damage' and 'bodily_injuries' to calculate the mean fraud rate
+fraud_rates <- data2 %>%
+  group_by(police_report_available, witnesses) %>%
+  summarise(fraud_rate = mean(fraud_reported_flag, na.rm = TRUE)) %>%
+  ungroup()
+
+# Create the heatmap
+p2 <- ggplot(fraud_rates, aes(x = police_report_available, y = witnesses, fill = fraud_rate)) +
+  geom_tile() + 
+  scale_fill_gradient(low = "white", high = "red", labels = scales::percent_format()) +
+  theme_minimal() +
+  labs(x = "police_report_available", y = "witnesses", fill = "Fraud Rate") +
+  geom_text(aes(label = scales::percent(fraud_rate)), size = 4, colour = "black")
+
+(p1 | p2)
+```
+
+### Claim
+
+This time, we are primarily focusing on four numerical variables: total claim amount (total_claim_amount), claim amount for injuries (injury_claim), claim amount for property damage (property_claim), and claim amount for vehicle damage (vehicle_claim).
+
+```{r}
+
+library(ggplot2)
+
+# 绘制盒形图，使用facet_wrap来根据fraud_reported的值分面
+p1 <- ggplot(data, aes(x = total_claim_amount, y = fraud_reported)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(x = "Total Claim Amount", y = "Fraud Reported", title = "Total Claim Amount by Fraud Reported")
+
+p2 <- ggplot(data, aes(x = injury_claim, y = fraud_reported)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(x = "claim amount for injuries", y = "Fraud Reported", title = "Total Claim Amount by Fraud Reported")
+
+p3 <- ggplot(data, aes(x = property_claim, y = fraud_reported)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(x = "claim amount for property damage", y = "Fraud Reported", title = "Total Claim Amount by Fraud Reported")
+
+p4 <- ggplot(data, aes(x = vehicle_claim, y = fraud_reported)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(x = "claim amount for vehicle damage", y = "Fraud Reported", title = "Total Claim Amount by Fraud Reported")
+
+(p1 | p2) /
+(p3 | p4)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
