@@ -1,3 +1,6 @@
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
 # Results
 
 ```{r}
@@ -411,6 +414,459 @@ In each plot, the presence of outliers in the 'Y' fraud reported groups indicate
 
 Overall, these visualizations suggest that fraudulent claims are generally associated with higher claim amounts across various types of damages and that there is a greater range of claim amounts within fraudulent claims compared to non-fraudulent ones. This data can be particularly useful for insurance companies when designing their fraud detection algorithms and risk assessment models.
 
+## Related to Policy
+
+In this part, the variables are related to the policies of the insurances.
+
+First, let us focus on the continuous variable, annual premium, which means the cost of insurance every year. Check the distribution of annual premium: 
+
+```{r}
+p <- ggplot(data, aes(x = policy_annual_premium, y = fraud_reported)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(x = "Annual premium amount", y = "Fraud Reported", title = "Annual premium amount by Fraud Reported")
+
+p
+```
+In this boxplot, we can see for the "Y" category, there are a few outliers on the higher end, indicating that there are some annual premium amounts significantly higher than the rest. For the "N" category, the median is again just above 1000, similar to the "Y" category, but the IQR is wider than in the "Y" category, indicating more variability in the annual premium amount when fraud is not reported. There are no significant outliers for this category.
+
+From this visual analysis, we can infer that there's a similarity in the median annual premium amounts whether fraud is reported or not. However, when fraud is reported, the annual premium amounts tend to be less variable and with some higher extreme values (outliers). This could suggest that while the typical case for fraud reporting does not involve unusually high premiums, the instances where it does involve significantly higher premiums are noteworthy.
+
+There are three variables left in this category: 
+
+1. policy_csl: Combined Single Limit (CSL) of the policy, indicating the limits of liability for bodily injury and property damage. 
+
+2. policy_deductable: Deductible amount for the policy.
+
+3. umbrella_limit:  Limit of the umbrella liability insurance, if any.
+
+We create a alluvial and mosaic plot for annual_premium, policy_csl and policy_deductable since umbrella limit has too many values and is not that vital in our research.
+
+We divided the annual premium into 3 categories according to values, which are "low", "medium", "high" respectively:
+```{r}
+breaks <- quantile(data$policy_annual_premium, probs = c(0, 0.25, 0.75, 1), na.rm = TRUE)
+labels <- c("low", "medium", "high")
+data$premium_category <- cut(data$policy_annual_premium, breaks = breaks, labels = labels, include.lowest = TRUE)
+```
+
+```{r}
+library(ggalluvial)
+library(alluvial)
+
+selected_data <- data %>% 
+  select(policy_csl, policy_deductable, premium_category,fraud_reported)
+
+frequency_data <- selected_data %>% 
+  count(policy_csl, policy_deductable, premium_category, fraud_reported)
+
+ggplot(data = frequency_data, 
+       aes(axis1 = policy_csl, axis2 = policy_deductable, axis3=premium_category, axis4=fraud_reported, y = n)) +
+  geom_alluvium(aes(fill = fraud_reported)) +
+  geom_stratum() +
+  geom_text(stat = "stratum", aes(label = paste(after_stat(stratum), ":\n",after_stat(count)))) +
+  scale_x_discrete(limits = c("Combined Single Limit", "Deductable","premium_category", "Fraud Reported")) + 
+  theme_minimal() +
+  theme(
+    axis.title.y = element_blank(), 
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(), 
+    panel.border = element_blank(), 
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank() 
+  ) +
+  labs(title = "Relationships among Combined Single Limit, Deductable, Umbrella Limit and Fraud Reported",
+       x = "") 
+
+```
+In this alluvial diagram, the relationships among the CSL, Deductable, premium, and whether fraud was reported are depicted.
+
+Then we have some observations:
+
+1. The "250/500" limit combined with a "1000" deductible seems to be a common policy choice, with a moderate number of these falling under the "medium" premium category.
+
+2. There's a significant flow from the "500/1000" limit with a "2000" deductible going to the "high" premium category, but the majority of these do not have fraud reported.
+
+3. Fraud seems to be more frequently reported in the "low" and "medium" premium categories than in the "high" premium category.
+
+4. It seems that higher deductibles are not necessarily associated with a higher incidence of reported fraud. Conversely, lower premium categories, which might be associated with less coverage or perceived value, may see more fraud reports. 
+
+```{r}
+library(vcd)
+label_text_size <- gpar(cex = 0.5)
+vcd::mosaic(fraud_reported ~ policy_csl + policy_deductable + premium_category, data, direction = c('h','h','v'), main = "Association between Combined Single Limit , Deductable and Frauds", highlighting_fill=c("lightblue","lightgreen"),gp_text = label_text_size,main_gp = gpar(cex = 1))
+```
+The above mosaic plot illustrates the association between Combined Single Limit, Deductable and Frauds. First of all, the plot suggests that fraud reports are present across all premium categories.
+
+At a glance, there is no immediately obvious pattern indicating a strong association between the deductible amounts and the frequency of fraud claims. However, the largest rectangles (indicating the most common policy types) are those with "no fraud" claims, particularly in the "medium" combined single limit category with lower deductibles.
+
+There seems to be a somewhat consistent pattern where, for a given combined single limit category, the proportion of fraud claims does not drastically change across different deductible levels.
+
+In summary, the mosaic plot suggests that there is some level of association between policy limits, deductibles, and fraud reports across different premium categories. 
+
+## Demograhic characteristics
+### Continuous variables:
+Let us firstly focus on two continuous variables related to demographic characteristics: "Age", which represents the age of the claimant. "months_as_customer": Number of months the claimant has been a customer.
+
+Plot the distributions of continuous features by Ridgelines and Boxplots:
+
+```{r}
+library(ggridges)
+library(patchwork)
+rg1 <- ggplot(data, aes(x = age, y = as.factor(fraud_reported), fill = as.factor(fraud_reported))) +
+  geom_density_ridges(scale = 1.5, alpha = .5) +
+  labs(title = "Age Distribution by Fraud Reported",
+       x = "Age",
+       y = "Fraud Reported") +
+  theme_ridges()
+
+rg2 <-ggplot(data, aes(x = months_as_customer, y = as.factor(fraud_reported), fill = as.factor(fraud_reported))) +
+  geom_density_ridges(scale = 1.5, alpha = .5) +
+  labs(title = "Months as Customer Distribution by Fraud Reported",
+       x = "Months as Customer",
+       y = "Fraud Reported") +
+  theme_ridges()
+
+rg1/
+rg2
+```
+```{r}
+b1 <- ggplot(data, aes(x = age, y = fraud_reported)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(x = "Age", y = "Fraud Reported", title = "Age by Fraud Reported")
+
+b2 <- ggplot(data, aes(x = months_as_customer, y = fraud_reported)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(x = "Months as customer", y = "Fraud Reported", title = "Months as customer by Fraud Reported")
+
+b1/b2
+```
+The two plots provided display statistical visualizations comparing the distributions of two variables — Age and Months as Customer — with respect to whether fraud was reported.
+
+**Ridgelines**
+
+Age:
+
+The plot for 'Y' (Yes) shows that the age distribution of customers who reported fraud is somewhat concentrated around a certain age, which looks to be around the late 30s to early 40s.
+
+The plot for 'N' (No) displays a wider distribution, indicating that the ages of customers who did not report fraud are more spread out.
+
+The area where both distributions overlap is considerable, which means that both groups have a significant age range in common where fraud is both reported and not reported.
+
+Months as Customer:
+
+Both 'Y' and 'N' distributions have their peaks at the lower end of the months as a customer axis, suggesting that newer customers are more represented in the dataset, whether they report fraud or not.
+
+The 'Y' group appears to have a sharper peak, which might indicate that customers who have been with the company for fewer months are slightly more likely to report fraud.
+
+There is a long tail for both distributions, extending towards the higher months as a customer, but the presence of fraud reports in long-term customers is relatively low.
+
+**Box Plots**
+
+Age:
+
+The median age for both groups is around the same point, which suggests there is no significant difference in the median age of customers who report fraud and those who do not.
+
+The interquartile range, which represents the middle 50% of the data, is slightly tighter for the 'Y' group than for the 'N' group, indicating that the ages of customers reporting fraud are more closely clustered.
+
+There are a few outliers in the 'N' group, indicating that there are some customers of an older age who did not report fraud that falls outside the typical age range.
+
+Months as Customer:
+
+The median months as a customer are similar for both groups, suggesting that the tenure of customers is not markedly different between those who report fraud and those who do not.
+
+The 'N' group has some outliers indicating a few customers who have been with the company for a very long time without reporting fraud.
+Summary of Analysis
+
+**Summary**
+
+The ridgelines suggest that there might be a slightly higher propensity for customers of a certain age range or those newer to the company to report fraud, but the evidence is not strong due to significant overlap in distributions.
+
+The box plots indicate that there is no substantial difference in the median age or customer tenure between those who report fraud and those who do not. The spread of the age and tenure data is wider for those who do not report fraud, but there are outliers in both cases.
+
+### Discrete variables:
+
+In the next step, we will analyze the rest five discrete variables: "insured sex", which is gender of the insured individual, "insured education level", which is  the education level of the insured individual, "insured occupation", which is the occupation of the insured individual, "insured hobbies", which represents hobbies of the insured individual, and "insured relationship", the relationship of the insured individual in his/her family.
+
+```{r}
+fraud_rates <- data %>%
+  group_by(insured_sex) %>%
+  summarize(fraud_rate = mean(fraud_reported == "Y", na.rm = TRUE))
+
+ggplot(fraud_rates, aes(x = insured_sex, y = fraud_rate, fill = insured_sex)) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(title = "Fraud Rates by Sex",
+       x = "Sex",
+       y = "Fraud Rate (%)") +
+  theme_minimal()
+```
+The bar chart shows the comparison of fraud rates between two sexes. The fraud rate for females is shown to be less than 20% and that of males appears to be slightly above 20%.
+
+This suggests that, according to the data presented, males have a slightly higher fraud rate than females.
+```{r}
+library(Lock5withR)
+library(forcats)
+
+fraud_rates <- data %>%
+  group_by(insured_education_level) %>%
+  summarize(fraud_rate = mean(fraud_reported == "Y", na.rm = TRUE))
+
+c1 <- ggplot(fraud_rates, aes(x = fraud_rate, y = fct_reorder(insured_education_level, fraud_rate))) +
+  geom_point(color = "blue") +
+  ggtitle("Fraud Rate by education levels") +
+  ylab("") +
+  theme_linedraw()
+
+fraud_rates <- data %>%
+  group_by(insured_occupation) %>%
+  summarize(fraud_rate = mean(fraud_reported == "Y", na.rm = TRUE))
+
+c2 <- ggplot(fraud_rates, aes(x = fraud_rate, y = fct_reorder(insured_occupation, fraud_rate))) +
+  geom_point(color = "blue") +
+  ggtitle("Fraud Rate by occupations") +
+  ylab("") +
+  theme_linedraw()
+
+fraud_rates <- data %>%
+  group_by(insured_hobbies) %>%
+  summarize(fraud_rate = mean(fraud_reported == "Y", na.rm = TRUE))
+
+c3 <- ggplot(fraud_rates, aes(x = fraud_rate, y = fct_reorder(insured_hobbies, fraud_rate))) +
+  geom_point(color = "blue") +
+  ggtitle("Fraud Rate by hobbies") +
+  ylab("") +
+  theme_linedraw()
+
+fraud_rates <- data %>%
+  group_by(insured_relationship) %>%
+  summarize(fraud_rate = mean(fraud_reported == "Y", na.rm = TRUE))
+
+c4 <- ggplot(fraud_rates, aes(x = fraud_rate, y = fct_reorder(insured_relationship, fraud_rate))) +
+  geom_point(color = "blue") +
+  ggtitle("Fraud Rate by family relationship") +
+  ylab("") +
+  theme_linedraw()
+```
+
+```{r}
+c1/
+c4
+
+c3
+c2
+```
+**Fraud Rate by Education Levels**:
+
+The dot plot shows fraud rates across different levels of education. The levels are arranged vertically with the fraud rate on the horizontal axis. Here are some observations:
+
+The fraud rate for individuals with a PhD appears to be the highest among the education levels shown, followed closely by those with an MD. 
+
+Those with a high school education or an associate degree show similar fraud rates, which are lower than those with advanced degrees like PhD and MD. 
+
+The fraud rate for individuals with a master's degree is the lowest among all the groups shown.
+
+**Fraud Rates by Family Relationship**
+
+This dot plot displays fraud rates according to family relationships. Observations include:
+
+The highest fraud rates are seen in individuals listed as "other-relative" and "wife."
+
+Individuals described as "husband" or "own-child" have the lowest observed fraud rates.
+
+There's a notable spread in fraud rates based on family relationships, suggesting a potential correlation between family status and the likelihood of fraud.
+
+**Fraud Rates by Occupations**
+
+This dot plot represents the fraud rates for various occupations. Here are some notable points:
+
+The occupation labeled "Exec-managerial" has the highest fraud rate, significantly higher than the others.
+
+"Other-service" and "priv-house-serv" occupations have some of the lowest fraud rates.
+
+The range of fraud rates across occupations is quite broad, indicating that occupation might be a significant factor in fraud rates.
+
+**Fraud Rate by Hobbies**
+
+Hobbies like 'chess' and 'cross-fit' have some of the highest fraud rates.The lowest fraud rate is associated with 'camping'.
+
+'chess' stands out as having an exceptionally high fraud rate compared to other hobbies, which might indicate a particular lifestyle or socio-economic status associated with higher fraud rates.
+
+
+From the above plots, let us mainly focus on four discrete variables: "insured_education_level", "insured_occupation", "insured_hobbies" and "insured_relationship".
+
+Since education level and occupation have a relatively strong relationship in our real life, so we try a alluvium figure regarding insured_education_level, insured_occupation and fraud_reported to see if there is any association.
+```{r}
+selected_data <- data %>% 
+  select(insured_education_level, insured_occupation, fraud_reported)
+
+frequency_data <- selected_data %>% 
+  count(insured_education_level, insured_occupation, fraud_reported)
+
+ggplot(data = frequency_data, 
+       aes(axis1 = insured_education_level, axis2 = insured_occupation, axis3=fraud_reported, y = n)) +
+  geom_alluvium(aes(fill = fraud_reported)) +
+  geom_stratum() +
+  geom_text(size=3,stat = "stratum", aes(label = paste(after_stat(stratum), ":\n",after_stat(count)))) +
+  scale_x_discrete(limits = c("Education Level", "Occupation", "Fraud Reported")) + 
+  theme_minimal() +
+  theme(
+    axis.text=element_text(size=10),
+    axis.title.y = element_blank(), 
+    axis.text.y = element_blank(), 
+    axis.ticks.y = element_blank(), 
+    panel.border = element_blank(), 
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(title = "Relationships among Education Level, Occupation and Fraud Reported",
+       x = "") 
+```
+Here are some observations:
+
+Certain occupations, like "exec-managerial" and "prof-specialty," seem to have a larger number of connections with higher education levels like "MD," "Masters," and "PhD."
+
+"Other-service" and "handlers-cleaners" occupations have connections across a variety of education levels, possibly with a larger representation from "High School" and "Associate" levels.
+
+Despite the larger number of "N" reports, there is a notable flow of "Y" reports as well, suggesting that fraud reporting is present across various occupations and education levels.
+
+Same as what we can get from the above Cleveland dot plots, certain occupations such as "transport-moving" and "Exec-managerial" have higher fraud rates, and these two positions always require high level of education.
+
+```{r}
+data2 <- data
+
+data2$fraud_reported_flag <- ifelse(data2$fraud_reported == "Y", 1, 0)
+
+fraud_rates <- data2 %>%
+  group_by(insured_education_level, insured_occupation) %>%
+  summarise(fraud_rate = mean(fraud_reported_flag, na.rm = TRUE)) %>%
+  ungroup()
+
+# Create the heatmap
+h1 <- ggplot(fraud_rates, aes(x = insured_education_level, y = insured_occupation, fill = fraud_rate)) +
+  geom_tile() + 
+  scale_fill_gradient(low = "white", high = "pink", labels = scales::percent_format()) +
+  theme_minimal() +
+  labs(x = "Education Level", y = "Occupation", fill = "Fraud Rate") +
+  geom_text(aes(label = scales::percent(fraud_rate)), size = 4, colour = "black")
+h1
+
+```
+
+```{r}
+fraud_rates <- data2 %>%
+  group_by(insured_relationship, insured_occupation) %>%
+  summarise(fraud_rate = mean(fraud_reported_flag, na.rm = TRUE)) %>%
+  ungroup()
+
+# Create the heatmap
+h2 <- ggplot(fraud_rates, aes(x = insured_relationship, y = insured_occupation, fill = fraud_rate)) +
+  geom_tile() + 
+  scale_fill_gradient(low = "white", high = "pink", labels = scales::percent_format()) +
+  theme_minimal() +
+  labs(y = "Occupation", x = "Family Relationship", fill = "Fraud Rate") +
+  geom_text(aes(label = scales::percent(fraud_rate)), size = 4, colour = "black")
+h2
+```
+
+```{r}
+fraud_rates <- data2 %>%
+  group_by(insured_education_level, insured_relationship) %>%
+  summarise(fraud_rate = mean(fraud_reported_flag, na.rm = TRUE)) %>%
+  ungroup()
+
+# Create the heatmap
+h3 <- ggplot(fraud_rates, aes(x = insured_education_level, y = insured_relationship, fill = fraud_rate)) +
+  geom_tile() + 
+  scale_fill_gradient(low = "white", high = "pink", labels = scales::percent_format()) +
+  theme_minimal() +
+  labs(x = "Education Level", y = "Family Relationship", fill = "Fraud Rate") +
+  geom_text(aes(label = scales::percent(fraud_rate)), size = 4, colour = "black")
+h3
+```
+Above are heatmaps that display the fraud rates across different occupations, education levels, and family relationships, which are an excellent way to visualize complex data and identify patterns or anomalies across multiple categories. The color intensity represents the magnitude of the fraud rate, with darker shades typically indicating higher rates.
+
+**Fraud Rate by Occupation and Education Level**
+
+Some occupations have consistently higher fraud rates across education levels, such as "exec-managerial" and "tech-support". 
+
+Certain education levels, like "PhD" and "Masters", are associated with higher fraud rates across different occupations.
+
+**Fraud Rate by Family Relationship and Education Level**
+
+This heatmap shows how fraud rates vary with different combinations of family relationship status and education levels.
+
+The "wife" category with "PhD" education level shows a particularly high fraud rate (63.64%).
+
+"Unmarried" individuals with "Masters" education also have a high fraud rate (36.84%).
+
+"Other-relative" with "High School" education level shows a lower fraud rate, as indicated by the lighter cell color (16.13%).
+
+**Fraud Rate by Occupation and Family Relationship**
+
+Here, the fraud rates are displayed based on occupation and family relationship.
+
+"Craft-repair" occupation associated with "wife" family relationship status has a very high fraud rate (70%).
+
+In contrast, "handlers-cleaners" with "own-child" family status has a 0% fraud rate, indicating no fraud reported in that category.
+
+Occupations such as "exec-managerial" and "craft-repair" show a high fraud rate with several family relationship statuses.
+
+**Summary*
+
+The data suggests that fraud rates are influenced by a complex interplay of occupation, education level, and family relationship status:
+
+1. Higher education levels do not necessarily correspond to lower fraud rates; in some cases, they are associated with higher rates.
+
+2. Certain occupations are consistently associated with higher fraud rates regardless of education level or family status.
+
+3. Family relationship status also influences fraud rates, with statuses such as "wife" and "unmarried" showing higher rates in certain contexts.
+
+## Vehicle related
+
+```{r}
+fraud_rates <- data %>%
+  group_by(auto_year) %>%
+  summarize(fraud_rate = mean(fraud_reported == "Y", na.rm = TRUE))
+
+ggplot(fraud_rates, aes(x = fraud_rate, y = fct_reorder(as.character(auto_year), fraud_rate))) +
+  geom_point(color = "blue") +
+  ggtitle("Fraud Rate by auto_year") +
+  ylab("") +
+  theme_linedraw()
+```
+**Fraud Rate by Auto Year**
+
+There isn't a clear trend related to the car's year and the fraud rate; the points are quite dispersed. Some years, like 2004, have significantly higher fraud rates, whereas others, like 2010, are among the lowest. So we can confirm this variable "auto_year" has few relationship with fraud rate.
+
+
+```{r}
+fraud_rates <- data %>%
+  group_by(auto_make, auto_model ) %>%
+  summarize(fraud_rate = mean(fraud_reported == "Y", na.rm = TRUE))
+
+ggplot(fraud_rates, aes(x = fraud_rate, y = reorder(auto_model, fraud_rate))) +
+  geom_point(color = "blue") +
+  facet_grid(auto_make ~ ., scales = "free_y", space = "free_y") +
+  ggtitle('fraud_rate of auto models facet by auto make') +
+  xlab("fraud_rate") +
+  ylab('') +
+  theme_linedraw() +
+  theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank())
+
+```
+**fraud_rate of auto models facet by auto make**
+
+From the plot of fraud_rate to auto models facet by auto make, Jeep appears to have the lowest fraud rate among the listed makes. The models of Mercedes and Nissan have the relatively highest fraud rates.
+
+The BMW X6 model appears to have the highest fraud rate, close to 40%. 
+
+Most models have a fraud rate below 20%.
+
+The specific brands and models seem to have higher possibility to be reported to be fraud (Mercedes ML350 and BMW X6), which are always expensive cars. Thus the individuals can get higher pay by the frauds.
+
+
 ## combined relationship
 
 ### Time
@@ -599,3 +1055,6 @@ Features such as 'policy_annual_premium', 'capital_loss', and 'witnesses' have a
 There is no distinct separation between fraudulent and non-fraudulent claims, as indicated by the overlap of red circles and blue triangles. This suggests that, based on the PCA, the selected features do not create clear clusters or groupings that separate fraudulent from non-fraudulent claims.
 
 The lack of clear separation might indicate that the features included in the PCA are not strong predictors of fraud on their own, or that fraud is a complex phenomenon that cannot be easily distinguished by these variables.
+
+### D3graph
+We also create a D3 graph which can help us to compare the relationship of "incident_state", "incident_hour_of_the_day", "incident_severity" and the "fraud_reported". You can see this interactive graph in part 4 D3graph!

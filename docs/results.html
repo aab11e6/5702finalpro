@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,8 +91,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -111,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -125,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Insurance Claims</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/aab11e6/Insurance-claims" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/aab11e6/Insurance-claims" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -185,11 +184,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#damage-and-trustworthiness" id="toc-damage-and-trustworthiness" class="nav-link" data-scroll-target="#damage-and-trustworthiness"><span class="header-section-number">3.2.4</span> damage and trustworthiness</a></li>
   <li><a href="#claim" id="toc-claim" class="nav-link" data-scroll-target="#claim"><span class="header-section-number">3.2.5</span> Claim</a></li>
   </ul></li>
-  <li><a href="#combined-relationship" id="toc-combined-relationship" class="nav-link" data-scroll-target="#combined-relationship"><span class="header-section-number">3.3</span> combined relationship</a>
+  <li><a href="#related-to-policy" id="toc-related-to-policy" class="nav-link" data-scroll-target="#related-to-policy"><span class="header-section-number">3.3</span> Related to Policy</a></li>
+  <li><a href="#demograhic-characteristics" id="toc-demograhic-characteristics" class="nav-link" data-scroll-target="#demograhic-characteristics"><span class="header-section-number">3.4</span> Demograhic characteristics</a>
   <ul class="collapse">
-  <li><a href="#time-1" id="toc-time-1" class="nav-link" data-scroll-target="#time-1"><span class="header-section-number">3.3.1</span> Time</a></li>
-  <li><a href="#policy-design" id="toc-policy-design" class="nav-link" data-scroll-target="#policy-design"><span class="header-section-number">3.3.2</span> Policy Design</a></li>
-  <li><a href="#pca" id="toc-pca" class="nav-link" data-scroll-target="#pca"><span class="header-section-number">3.3.3</span> PCA</a></li>
+  <li><a href="#continuous-variables" id="toc-continuous-variables" class="nav-link" data-scroll-target="#continuous-variables"><span class="header-section-number">3.4.1</span> Continuous variables:</a></li>
+  <li><a href="#discrete-variables" id="toc-discrete-variables" class="nav-link" data-scroll-target="#discrete-variables"><span class="header-section-number">3.4.2</span> Discrete variables:</a></li>
+  </ul></li>
+  <li><a href="#vehicle-related" id="toc-vehicle-related" class="nav-link" data-scroll-target="#vehicle-related"><span class="header-section-number">3.5</span> Vehicle related</a></li>
+  <li><a href="#combined-relationship" id="toc-combined-relationship" class="nav-link" data-scroll-target="#combined-relationship"><span class="header-section-number">3.6</span> combined relationship</a>
+  <ul class="collapse">
+  <li><a href="#time-1" id="toc-time-1" class="nav-link" data-scroll-target="#time-1"><span class="header-section-number">3.6.1</span> Time</a></li>
+  <li><a href="#policy-design" id="toc-policy-design" class="nav-link" data-scroll-target="#policy-design"><span class="header-section-number">3.6.2</span> Policy Design</a></li>
+  <li><a href="#pca" id="toc-pca" class="nav-link" data-scroll-target="#pca"><span class="header-section-number">3.6.3</span> PCA</a></li>
+  <li><a href="#d3graph" id="toc-d3graph" class="nav-link" data-scroll-target="#d3graph"><span class="header-section-number">3.6.4</span> D3graph</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aab11e6/Insurance-claims/edit/main/results.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aab11e6/Insurance-claims/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -623,75 +630,531 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Overall, these visualizations suggest that fraudulent claims are generally associated with higher claim amounts across various types of damages and that there is a greater range of claim amounts within fraudulent claims compared to non-fraudulent ones. This data can be particularly useful for insurance companies when designing their fraud detection algorithms and risk assessment models.</p>
 </section>
 </section>
-<section id="combined-relationship" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="combined-relationship"><span class="header-section-number">3.3</span> combined relationship</h2>
-<section id="time-1" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="time-1"><span class="header-section-number">3.3.1</span> Time</h3>
+<section id="related-to-policy" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="related-to-policy"><span class="header-section-number">3.3</span> Related to Policy</h2>
+<p>In this part, the variables are related to the policies of the insurances.</p>
+<p>First, let us focus on the continuous variable, annual premium, which means the cost of insurance every year. Check the distribution of annual premium:</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data preprocess </span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'insurance_claims.csv'</span>, <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">"?"</span>, <span class="st">"NA"</span>))</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">subset</span>(data, <span class="at">select =</span> <span class="sc">-</span>X_c39)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>incident_date <span class="ot">&lt;-</span> <span class="fu">mdy</span>(data<span class="sc">$</span>incident_date) <span class="co"># mdy() is a lubridate function for mm/dd/yyyy format</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>policy_bind_date <span class="ot">&lt;-</span> <span class="fu">mdy</span>(data<span class="sc">$</span>policy_bind_date)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>policy_hold_duration_months <span class="ot">&lt;-</span> <span class="fu">interval</span>(<span class="at">start =</span> data<span class="sc">$</span>policy_bind_date, <span class="at">end =</span> data<span class="sc">$</span>incident_date) <span class="sc">%/%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> policy_annual_premium, <span class="at">y =</span> fraud_reported)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Annual premium amount"</span>, <span class="at">y =</span> <span class="st">"Fraud Reported"</span>, <span class="at">title =</span> <span class="st">"Annual premium amount by Fraud Reported"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In this boxplot, we can see for the “Y” category, there are a few outliers on the higher end, indicating that there are some annual premium amounts significantly higher than the rest. For the “N” category, the median is again just above 1000, similar to the “Y” category, but the IQR is wider than in the “Y” category, indicating more variability in the annual premium amount when fraud is not reported. There are no significant outliers for this category.</p>
+<p>From this visual analysis, we can infer that there’s a similarity in the median annual premium amounts whether fraud is reported or not. However, when fraud is reported, the annual premium amounts tend to be less variable and with some higher extreme values (outliers). This could suggest that while the typical case for fraud reporting does not involve unusually high premiums, the instances where it does involve significantly higher premiums are noteworthy.</p>
+<p>There are three variables left in this category:</p>
+<ol type="1">
+<li><p>policy_csl: Combined Single Limit (CSL) of the policy, indicating the limits of liability for bodily injury and property damage.</p></li>
+<li><p>policy_deductable: Deductible amount for the policy.</p></li>
+<li><p>umbrella_limit: Limit of the umbrella liability insurance, if any.</p></li>
+</ol>
+<p>We create a alluvial and mosaic plot for annual_premium, policy_csl and policy_deductable since umbrella limit has too many values and is not that vital in our research.</p>
+<p>We divided the annual premium into 3 categories according to values, which are “low”, “medium”, “high” respectively:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">quantile</span>(data<span class="sc">$</span>policy_annual_premium, <span class="at">probs =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="dv">1</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>premium_category <span class="ot">&lt;-</span> <span class="fu">cut</span>(data<span class="sc">$</span>policy_annual_premium, <span class="at">breaks =</span> breaks, <span class="at">labels =</span> labels, <span class="at">include.lowest =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>fraud_y_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(data, fraud_reported <span class="sc">==</span> <span class="st">"Y"</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>fraud_n_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(data, fraud_reported <span class="sc">==</span> <span class="st">"N"</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>fraud_y_data<span class="sc">$</span>duration_group <span class="ot">&lt;-</span> <span class="fu">cut</span>(fraud_y_data<span class="sc">$</span>policy_hold_duration_months, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">300</span>, <span class="at">by=</span><span class="dv">20</span>), <span class="at">include.lowest=</span><span class="cn">TRUE</span>, <span class="at">right=</span><span class="cn">FALSE</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>fraud_y_data<span class="sc">$</span>customer_group <span class="ot">&lt;-</span> <span class="fu">cut</span>(fraud_y_data<span class="sc">$</span>months_as_customer, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">480</span>, <span class="at">by=</span><span class="dv">20</span>), <span class="at">include.lowest=</span><span class="cn">TRUE</span>, <span class="at">right=</span><span class="cn">FALSE</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>fraud_n_data<span class="sc">$</span>duration_group <span class="ot">&lt;-</span> <span class="fu">cut</span>(fraud_n_data<span class="sc">$</span>policy_hold_duration_months, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">320</span>, <span class="at">by=</span><span class="dv">20</span>), <span class="at">include.lowest=</span><span class="cn">TRUE</span>, <span class="at">right=</span><span class="cn">FALSE</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>fraud_n_data<span class="sc">$</span>customer_group <span class="ot">&lt;-</span> <span class="fu">cut</span>(fraud_n_data<span class="sc">$</span>months_as_customer, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">480</span>, <span class="at">by=</span><span class="dv">20</span>), <span class="at">include.lowest=</span><span class="cn">TRUE</span>, <span class="at">right=</span><span class="cn">FALSE</span>)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>heatmap_data_y <span class="ot">&lt;-</span> fraud_y_data <span class="sc">%&gt;%</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(duration_group, customer_group) <span class="sc">%&gt;%</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">'drop'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(<span class="at">key =</span> customer_group, <span class="at">value =</span> n, <span class="at">fill =</span> <span class="dv">0</span>)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>heatmap_data_n <span class="ot">&lt;-</span> fraud_n_data <span class="sc">%&gt;%</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(duration_group, customer_group) <span class="sc">%&gt;%</span></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">'drop'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(<span class="at">key =</span> customer_group, <span class="at">value =</span> n, <span class="at">fill =</span> <span class="dv">0</span>)</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>heatmap_data_y_long <span class="ot">&lt;-</span> <span class="fu">gather</span>(heatmap_data_y, <span class="at">key =</span> <span class="st">"customer_group"</span>, <span class="at">value =</span> <span class="st">"n"</span>, <span class="sc">-</span>duration_group)</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>heatmap_data_n_long <span class="ot">&lt;-</span> <span class="fu">gather</span>(heatmap_data_n, <span class="at">key =</span> <span class="st">"customer_group"</span>, <span class="at">value =</span> <span class="st">"n"</span>, <span class="sc">-</span>duration_group)</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>heatmap_data_y_long<span class="sc">$</span>customer_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(heatmap_data_y_long<span class="sc">$</span>customer_group, <span class="at">levels =</span> <span class="fu">unique</span>(heatmap_data_y_long<span class="sc">$</span>customer_group))</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>heatmap_data_n_long<span class="sc">$</span>customer_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(heatmap_data_n_long<span class="sc">$</span>customer_group, <span class="at">levels =</span> <span class="fu">unique</span>(heatmap_data_n_long<span class="sc">$</span>customer_group))</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>heatmap_data_y_long<span class="sc">$</span>duration_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(heatmap_data_y_long<span class="sc">$</span>duration_group, <span class="at">levels =</span> <span class="fu">unique</span>(heatmap_data_y_long<span class="sc">$</span>duration_group))</span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>heatmap_data_n_long<span class="sc">$</span>duration_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(heatmap_data_n_long<span class="sc">$</span>duration_group, <span class="at">levels =</span> <span class="fu">unique</span>(heatmap_data_n_long<span class="sc">$</span>duration_group))</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(heatmap_data_y_long, <span class="fu">aes</span>(<span class="at">x =</span> duration_group, <span class="at">y =</span> customer_group, <span class="at">fill =</span> n)) <span class="sc">+</span></span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fraud Reported = Y"</span>, <span class="at">x =</span> <span class="st">"Policy Hold Duration Group"</span>, <span class="at">y =</span> <span class="st">"Months as Customer Group"</span>) <span class="sc">+</span></span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(heatmap_data_n_long, <span class="fu">aes</span>(<span class="at">x =</span> duration_group, <span class="at">y =</span> customer_group, <span class="at">fill =</span> n)) <span class="sc">+</span></span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fraud Reported = N"</span>, <span class="at">x =</span> <span class="st">"Policy Hold Duration Group"</span>, <span class="at">y =</span> <span class="st">"Months as Customer Group"</span>) <span class="sc">+</span></span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalluvial)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(alluvial)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>selected_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(policy_csl, policy_deductable, premium_category,fraud_reported)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>frequency_data <span class="ot">&lt;-</span> selected_data <span class="sc">%&gt;%</span> </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(policy_csl, policy_deductable, premium_category, fraud_reported)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> frequency_data, </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">axis1 =</span> policy_csl, <span class="at">axis2 =</span> policy_deductable, <span class="at">axis3=</span>premium_category, <span class="at">axis4=</span>fraud_reported, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_alluvium</span>(<span class="fu">aes</span>(<span class="at">fill =</span> fraud_reported)) <span class="sc">+</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stratum</span>() <span class="sc">+</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">"stratum"</span>, <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="fu">after_stat</span>(stratum), <span class="st">":</span><span class="sc">\n</span><span class="st">"</span>,<span class="fu">after_stat</span>(count)))) <span class="sc">+</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"Combined Single Limit"</span>, <span class="st">"Deductable"</span>,<span class="st">"premium_category"</span>, <span class="st">"Fraud Reported"</span>)) <span class="sc">+</span> </span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.border =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>() </span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationships among Combined Single Limit, Deductable, Umbrella Limit and Fraud Reported"</span>,</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="960"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In this alluvial diagram, the relationships among the CSL, Deductable, premium, and whether fraud was reported are depicted.</p>
+<p>Then we have some observations:</p>
+<ol type="1">
+<li><p>The “250/500” limit combined with a “1000” deductible seems to be a common policy choice, with a moderate number of these falling under the “medium” premium category.</p></li>
+<li><p>There’s a significant flow from the “500/1000” limit with a “2000” deductible going to the “high” premium category, but the majority of these do not have fraud reported.</p></li>
+<li><p>Fraud seems to be more frequently reported in the “low” and “medium” premium categories than in the “high” premium category.</p></li>
+<li><p>It seems that higher deductibles are not necessarily associated with a higher incidence of reported fraud. Conversely, lower premium categories, which might be associated with less coverage or perceived value, may see more fraud reports.</p></li>
+</ol>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>label_text_size <span class="ot">&lt;-</span> <span class="fu">gpar</span>(<span class="at">cex =</span> <span class="fl">0.5</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>vcd<span class="sc">::</span><span class="fu">mosaic</span>(fraud_reported <span class="sc">~</span> policy_csl <span class="sc">+</span> policy_deductable <span class="sc">+</span> premium_category, data, <span class="at">direction =</span> <span class="fu">c</span>(<span class="st">'h'</span>,<span class="st">'h'</span>,<span class="st">'v'</span>), <span class="at">main =</span> <span class="st">"Association between Combined Single Limit , Deductable and Frauds"</span>, <span class="at">highlighting_fill=</span><span class="fu">c</span>(<span class="st">"lightblue"</span>,<span class="st">"lightgreen"</span>),<span class="at">gp_text =</span> label_text_size,<span class="at">main_gp =</span> <span class="fu">gpar</span>(<span class="at">cex =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The above mosaic plot illustrates the association between Combined Single Limit, Deductable and Frauds. First of all, the plot suggests that fraud reports are present across all premium categories.</p>
+<p>At a glance, there is no immediately obvious pattern indicating a strong association between the deductible amounts and the frequency of fraud claims. However, the largest rectangles (indicating the most common policy types) are those with “no fraud” claims, particularly in the “medium” combined single limit category with lower deductibles.</p>
+<p>There seems to be a somewhat consistent pattern where, for a given combined single limit category, the proportion of fraud claims does not drastically change across different deductible levels.</p>
+<p>In summary, the mosaic plot suggests that there is some level of association between policy limits, deductibles, and fraud reports across different premium categories.</p>
+</section>
+<section id="demograhic-characteristics" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="demograhic-characteristics"><span class="header-section-number">3.4</span> Demograhic characteristics</h2>
+<section id="continuous-variables" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="continuous-variables"><span class="header-section-number">3.4.1</span> Continuous variables:</h3>
+<p>Let us firstly focus on two continuous variables related to demographic characteristics: “Age”, which represents the age of the claimant. “months_as_customer”: Number of months the claimant has been a customer.</p>
+<p>Plot the distributions of continuous features by Ridgelines and Boxplots:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>rg1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="fu">as.factor</span>(fraud_reported), <span class="at">fill =</span> <span class="fu">as.factor</span>(fraud_reported))) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">scale =</span> <span class="fl">1.5</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Age Distribution by Fraud Reported"</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Age"</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Fraud Reported"</span>) <span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ridges</span>()</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>rg2 <span class="ot">&lt;-</span><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> months_as_customer, <span class="at">y =</span> <span class="fu">as.factor</span>(fraud_reported), <span class="at">fill =</span> <span class="fu">as.factor</span>(fraud_reported))) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">scale =</span> <span class="fl">1.5</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Months as Customer Distribution by Fraud Reported"</span>,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Months as Customer"</span>,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Fraud Reported"</span>) <span class="sc">+</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ridges</span>()</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>rg1<span class="sc">/</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>rg2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> fraud_reported)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">"Fraud Reported"</span>, <span class="at">title =</span> <span class="st">"Age by Fraud Reported"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> months_as_customer, <span class="at">y =</span> fraud_reported)) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Months as customer"</span>, <span class="at">y =</span> <span class="st">"Fraud Reported"</span>, <span class="at">title =</span> <span class="st">"Months as customer by Fraud Reported"</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>b1<span class="sc">/</span>b2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The two plots provided display statistical visualizations comparing the distributions of two variables — Age and Months as Customer — with respect to whether fraud was reported.</p>
+<p><strong>Ridgelines</strong></p>
+<p>Age:</p>
+<p>The plot for ‘Y’ (Yes) shows that the age distribution of customers who reported fraud is somewhat concentrated around a certain age, which looks to be around the late 30s to early 40s.</p>
+<p>The plot for ‘N’ (No) displays a wider distribution, indicating that the ages of customers who did not report fraud are more spread out.</p>
+<p>The area where both distributions overlap is considerable, which means that both groups have a significant age range in common where fraud is both reported and not reported.</p>
+<p>Months as Customer:</p>
+<p>Both ‘Y’ and ‘N’ distributions have their peaks at the lower end of the months as a customer axis, suggesting that newer customers are more represented in the dataset, whether they report fraud or not.</p>
+<p>The ‘Y’ group appears to have a sharper peak, which might indicate that customers who have been with the company for fewer months are slightly more likely to report fraud.</p>
+<p>There is a long tail for both distributions, extending towards the higher months as a customer, but the presence of fraud reports in long-term customers is relatively low.</p>
+<p><strong>Box Plots</strong></p>
+<p>Age:</p>
+<p>The median age for both groups is around the same point, which suggests there is no significant difference in the median age of customers who report fraud and those who do not.</p>
+<p>The interquartile range, which represents the middle 50% of the data, is slightly tighter for the ‘Y’ group than for the ‘N’ group, indicating that the ages of customers reporting fraud are more closely clustered.</p>
+<p>There are a few outliers in the ‘N’ group, indicating that there are some customers of an older age who did not report fraud that falls outside the typical age range.</p>
+<p>Months as Customer:</p>
+<p>The median months as a customer are similar for both groups, suggesting that the tenure of customers is not markedly different between those who report fraud and those who do not.</p>
+<p>The ‘N’ group has some outliers indicating a few customers who have been with the company for a very long time without reporting fraud. Summary of Analysis</p>
+<p><strong>Summary</strong></p>
+<p>The ridgelines suggest that there might be a slightly higher propensity for customers of a certain age range or those newer to the company to report fraud, but the evidence is not strong due to significant overlap in distributions.</p>
+<p>The box plots indicate that there is no substantial difference in the median age or customer tenure between those who report fraud and those who do not. The spread of the age and tenure data is wider for those who do not report fraud, but there are outliers in both cases.</p>
+</section>
+<section id="discrete-variables" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="discrete-variables"><span class="header-section-number">3.4.2</span> Discrete variables:</h3>
+<p>In the next step, we will analyze the rest five discrete variables: “insured sex”, which is gender of the insured individual, “insured education level”, which is the education level of the insured individual, “insured occupation”, which is the occupation of the insured individual, “insured hobbies”, which represents hobbies of the insured individual, and “insured relationship”, the relationship of the insured individual in his/her family.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fraud_rates <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(insured_sex) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">fraud_rate =</span> <span class="fu">mean</span>(fraud_reported <span class="sc">==</span> <span class="st">"Y"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fraud_rates, <span class="fu">aes</span>(<span class="at">x =</span> insured_sex, <span class="at">y =</span> fraud_rate, <span class="at">fill =</span> insured_sex)) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fraud Rates by Sex"</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sex"</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Fraud Rate (%)"</span>) <span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The bar chart shows the comparison of fraud rates between two sexes. The fraud rate for females is shown to be less than 20% and that of males appears to be slightly above 20%.</p>
+<p>This suggests that, according to the data presented, males have a slightly higher fraud rate than females.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Lock5withR)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>fraud_rates <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(insured_education_level) <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">fraud_rate =</span> <span class="fu">mean</span>(fraud_reported <span class="sc">==</span> <span class="st">"Y"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(fraud_rates, <span class="fu">aes</span>(<span class="at">x =</span> fraud_rate, <span class="at">y =</span> <span class="fu">fct_reorder</span>(insured_education_level, fraud_rate))) <span class="sc">+</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Fraud Rate by education levels"</span>) <span class="sc">+</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>()</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>fraud_rates <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(insured_occupation) <span class="sc">%&gt;%</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">fraud_rate =</span> <span class="fu">mean</span>(fraud_reported <span class="sc">==</span> <span class="st">"Y"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(fraud_rates, <span class="fu">aes</span>(<span class="at">x =</span> fraud_rate, <span class="at">y =</span> <span class="fu">fct_reorder</span>(insured_occupation, fraud_rate))) <span class="sc">+</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Fraud Rate by occupations"</span>) <span class="sc">+</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>()</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>fraud_rates <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(insured_hobbies) <span class="sc">%&gt;%</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">fraud_rate =</span> <span class="fu">mean</span>(fraud_reported <span class="sc">==</span> <span class="st">"Y"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>c3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(fraud_rates, <span class="fu">aes</span>(<span class="at">x =</span> fraud_rate, <span class="at">y =</span> <span class="fu">fct_reorder</span>(insured_hobbies, fraud_rate))) <span class="sc">+</span></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Fraud Rate by hobbies"</span>) <span class="sc">+</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>()</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>fraud_rates <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(insured_relationship) <span class="sc">%&gt;%</span></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">fraud_rate =</span> <span class="fu">mean</span>(fraud_reported <span class="sc">==</span> <span class="st">"Y"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>c4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(fraud_rates, <span class="fu">aes</span>(<span class="at">x =</span> fraud_rate, <span class="at">y =</span> <span class="fu">fct_reorder</span>(insured_relationship, fraud_rate))) <span class="sc">+</span></span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Fraud Rate by family relationship"</span>) <span class="sc">+</span></span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>c1<span class="sc">/</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>c4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>c3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-23-2.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>c2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-23-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Fraud Rate by Education Levels</strong>:</p>
+<p>The dot plot shows fraud rates across different levels of education. The levels are arranged vertically with the fraud rate on the horizontal axis. Here are some observations:</p>
+<p>The fraud rate for individuals with a PhD appears to be the highest among the education levels shown, followed closely by those with an MD.</p>
+<p>Those with a high school education or an associate degree show similar fraud rates, which are lower than those with advanced degrees like PhD and MD.</p>
+<p>The fraud rate for individuals with a master’s degree is the lowest among all the groups shown.</p>
+<p><strong>Fraud Rates by Family Relationship</strong></p>
+<p>This dot plot displays fraud rates according to family relationships. Observations include:</p>
+<p>The highest fraud rates are seen in individuals listed as “other-relative” and “wife.”</p>
+<p>Individuals described as “husband” or “own-child” have the lowest observed fraud rates.</p>
+<p>There’s a notable spread in fraud rates based on family relationships, suggesting a potential correlation between family status and the likelihood of fraud.</p>
+<p><strong>Fraud Rates by Occupations</strong></p>
+<p>This dot plot represents the fraud rates for various occupations. Here are some notable points:</p>
+<p>The occupation labeled “Exec-managerial” has the highest fraud rate, significantly higher than the others.</p>
+<p>“Other-service” and “priv-house-serv” occupations have some of the lowest fraud rates.</p>
+<p>The range of fraud rates across occupations is quite broad, indicating that occupation might be a significant factor in fraud rates.</p>
+<p><strong>Fraud Rate by Hobbies</strong></p>
+<p>Hobbies like ‘chess’ and ‘cross-fit’ have some of the highest fraud rates.The lowest fraud rate is associated with ‘camping’.</p>
+<p>‘chess’ stands out as having an exceptionally high fraud rate compared to other hobbies, which might indicate a particular lifestyle or socio-economic status associated with higher fraud rates.</p>
+<p>From the above plots, let us mainly focus on four discrete variables: “insured_education_level”, “insured_occupation”, “insured_hobbies” and “insured_relationship”.</p>
+<p>Since education level and occupation have a relatively strong relationship in our real life, so we try a alluvium figure regarding insured_education_level, insured_occupation and fraud_reported to see if there is any association.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>selected_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(insured_education_level, insured_occupation, fraud_reported)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>frequency_data <span class="ot">&lt;-</span> selected_data <span class="sc">%&gt;%</span> </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(insured_education_level, insured_occupation, fraud_reported)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> frequency_data, </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">axis1 =</span> insured_education_level, <span class="at">axis2 =</span> insured_occupation, <span class="at">axis3=</span>fraud_reported, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_alluvium</span>(<span class="fu">aes</span>(<span class="at">fill =</span> fraud_reported)) <span class="sc">+</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stratum</span>() <span class="sc">+</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">size=</span><span class="dv">3</span>,<span class="at">stat =</span> <span class="st">"stratum"</span>, <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="fu">after_stat</span>(stratum), <span class="st">":</span><span class="sc">\n</span><span class="st">"</span>,<span class="fu">after_stat</span>(count)))) <span class="sc">+</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"Education Level"</span>, <span class="st">"Occupation"</span>, <span class="st">"Fraud Reported"</span>)) <span class="sc">+</span> </span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.border =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationships among Education Level, Occupation and Fraud Reported"</span>,</span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Here are some observations:</p>
+<p>Certain occupations, like “exec-managerial” and “prof-specialty,” seem to have a larger number of connections with higher education levels like “MD,” “Masters,” and “PhD.”</p>
+<p>“Other-service” and “handlers-cleaners” occupations have connections across a variety of education levels, possibly with a larger representation from “High School” and “Associate” levels.</p>
+<p>Despite the larger number of “N” reports, there is a notable flow of “Y” reports as well, suggesting that fraud reporting is present across various occupations and education levels.</p>
+<p>Same as what we can get from the above Cleveland dot plots, certain occupations such as “transport-moving” and “Exec-managerial” have higher fraud rates, and these two positions always require high level of education.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> data</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>data2<span class="sc">$</span>fraud_reported_flag <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(data2<span class="sc">$</span>fraud_reported <span class="sc">==</span> <span class="st">"Y"</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>fraud_rates <span class="ot">&lt;-</span> data2 <span class="sc">%&gt;%</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(insured_education_level, insured_occupation) <span class="sc">%&gt;%</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">fraud_rate =</span> <span class="fu">mean</span>(fraud_reported_flag, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the heatmap</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>h1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(fraud_rates, <span class="fu">aes</span>(<span class="at">x =</span> insured_education_level, <span class="at">y =</span> insured_occupation, <span class="at">fill =</span> fraud_rate)) <span class="sc">+</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"pink"</span>, <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Education Level"</span>, <span class="at">y =</span> <span class="st">"Occupation"</span>, <span class="at">fill =</span> <span class="st">"Fraud Rate"</span>) <span class="sc">+</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(fraud_rate)), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">colour =</span> <span class="st">"black"</span>)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>h1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fraud_rates <span class="ot">&lt;-</span> data2 <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(insured_relationship, insured_occupation) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">fraud_rate =</span> <span class="fu">mean</span>(fraud_reported_flag, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the heatmap</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>h2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(fraud_rates, <span class="fu">aes</span>(<span class="at">x =</span> insured_relationship, <span class="at">y =</span> insured_occupation, <span class="at">fill =</span> fraud_rate)) <span class="sc">+</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"pink"</span>, <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Occupation"</span>, <span class="at">x =</span> <span class="st">"Family Relationship"</span>, <span class="at">fill =</span> <span class="st">"Fraud Rate"</span>) <span class="sc">+</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(fraud_rate)), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">colour =</span> <span class="st">"black"</span>)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>h2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>fraud_rates <span class="ot">&lt;-</span> data2 <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(insured_education_level, insured_relationship) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">fraud_rate =</span> <span class="fu">mean</span>(fraud_reported_flag, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the heatmap</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>h3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(fraud_rates, <span class="fu">aes</span>(<span class="at">x =</span> insured_education_level, <span class="at">y =</span> insured_relationship, <span class="at">fill =</span> fraud_rate)) <span class="sc">+</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"pink"</span>, <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Education Level"</span>, <span class="at">y =</span> <span class="st">"Family Relationship"</span>, <span class="at">fill =</span> <span class="st">"Fraud Rate"</span>) <span class="sc">+</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(fraud_rate)), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">colour =</span> <span class="st">"black"</span>)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>h3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Above are heatmaps that display the fraud rates across different occupations, education levels, and family relationships, which are an excellent way to visualize complex data and identify patterns or anomalies across multiple categories. The color intensity represents the magnitude of the fraud rate, with darker shades typically indicating higher rates.</p>
+<p><strong>Fraud Rate by Occupation and Education Level</strong></p>
+<p>Some occupations have consistently higher fraud rates across education levels, such as “exec-managerial” and “tech-support”.</p>
+<p>Certain education levels, like “PhD” and “Masters”, are associated with higher fraud rates across different occupations.</p>
+<p><strong>Fraud Rate by Family Relationship and Education Level</strong></p>
+<p>This heatmap shows how fraud rates vary with different combinations of family relationship status and education levels.</p>
+<p>The “wife” category with “PhD” education level shows a particularly high fraud rate (63.64%).</p>
+<p>“Unmarried” individuals with “Masters” education also have a high fraud rate (36.84%).</p>
+<p>“Other-relative” with “High School” education level shows a lower fraud rate, as indicated by the lighter cell color (16.13%).</p>
+<p><strong>Fraud Rate by Occupation and Family Relationship</strong></p>
+<p>Here, the fraud rates are displayed based on occupation and family relationship.</p>
+<p>“Craft-repair” occupation associated with “wife” family relationship status has a very high fraud rate (70%).</p>
+<p>In contrast, “handlers-cleaners” with “own-child” family status has a 0% fraud rate, indicating no fraud reported in that category.</p>
+<p>Occupations such as “exec-managerial” and “craft-repair” show a high fraud rate with several family relationship statuses.</p>
+<p>**Summary*</p>
+<p>The data suggests that fraud rates are influenced by a complex interplay of occupation, education level, and family relationship status:</p>
+<ol type="1">
+<li><p>Higher education levels do not necessarily correspond to lower fraud rates; in some cases, they are associated with higher rates.</p></li>
+<li><p>Certain occupations are consistently associated with higher fraud rates regardless of education level or family status.</p></li>
+<li><p>Family relationship status also influences fraud rates, with statuses such as “wife” and “unmarried” showing higher rates in certain contexts.</p></li>
+</ol>
+</section>
+</section>
+<section id="vehicle-related" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="vehicle-related"><span class="header-section-number">3.5</span> Vehicle related</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>fraud_rates <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(auto_year) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">fraud_rate =</span> <span class="fu">mean</span>(fraud_reported <span class="sc">==</span> <span class="st">"Y"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fraud_rates, <span class="fu">aes</span>(<span class="at">x =</span> fraud_rate, <span class="at">y =</span> <span class="fu">fct_reorder</span>(<span class="fu">as.character</span>(auto_year), fraud_rate))) <span class="sc">+</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Fraud Rate by auto_year"</span>) <span class="sc">+</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Fraud Rate by Auto Year</strong></p>
+<p>There isn’t a clear trend related to the car’s year and the fraud rate; the points are quite dispersed. Some years, like 2004, have significantly higher fraud rates, whereas others, like 2010, are among the lowest. So we can confirm this variable “auto_year” has few relationship with fraud rate.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>fraud_rates <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(auto_make, auto_model ) <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">fraud_rate =</span> <span class="fu">mean</span>(fraud_reported <span class="sc">==</span> <span class="st">"Y"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fraud_rates, <span class="fu">aes</span>(<span class="at">x =</span> fraud_rate, <span class="at">y =</span> <span class="fu">reorder</span>(auto_model, fraud_rate))) <span class="sc">+</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(auto_make <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">space =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'fraud_rate of auto models facet by auto make'</span>) <span class="sc">+</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"fraud_rate"</span>) <span class="sc">+</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">''</span>) <span class="sc">+</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(), <span class="at">panel.grid.minor.x =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>fraud_rate of auto models facet by auto make</strong></p>
+<p>From the plot of fraud_rate to auto models facet by auto make, Jeep appears to have the lowest fraud rate among the listed makes. The models of Mercedes and Nissan have the relatively highest fraud rates.</p>
+<p>The BMW X6 model appears to have the highest fraud rate, close to 40%.</p>
+<p>Most models have a fraud rate below 20%.</p>
+<p>The specific brands and models seem to have higher possibility to be reported to be fraud (Mercedes ML350 and BMW X6), which are always expensive cars. Thus the individuals can get higher pay by the frauds.</p>
+</section>
+<section id="combined-relationship" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="combined-relationship"><span class="header-section-number">3.6</span> combined relationship</h2>
+<section id="time-1" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="time-1"><span class="header-section-number">3.6.1</span> Time</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data preprocess </span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'insurance_claims.csv'</span>, <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">"?"</span>, <span class="st">"NA"</span>))</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">subset</span>(data, <span class="at">select =</span> <span class="sc">-</span>X_c39)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>incident_date <span class="ot">&lt;-</span> <span class="fu">mdy</span>(data<span class="sc">$</span>incident_date) <span class="co"># mdy() is a lubridate function for mm/dd/yyyy format</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>policy_bind_date <span class="ot">&lt;-</span> <span class="fu">mdy</span>(data<span class="sc">$</span>policy_bind_date)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>policy_hold_duration_months <span class="ot">&lt;-</span> <span class="fu">interval</span>(<span class="at">start =</span> data<span class="sc">$</span>policy_bind_date, <span class="at">end =</span> data<span class="sc">$</span>incident_date) <span class="sc">%/%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>fraud_y_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(data, fraud_reported <span class="sc">==</span> <span class="st">"Y"</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>fraud_n_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(data, fraud_reported <span class="sc">==</span> <span class="st">"N"</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>fraud_y_data<span class="sc">$</span>duration_group <span class="ot">&lt;-</span> <span class="fu">cut</span>(fraud_y_data<span class="sc">$</span>policy_hold_duration_months, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">300</span>, <span class="at">by=</span><span class="dv">20</span>), <span class="at">include.lowest=</span><span class="cn">TRUE</span>, <span class="at">right=</span><span class="cn">FALSE</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>fraud_y_data<span class="sc">$</span>customer_group <span class="ot">&lt;-</span> <span class="fu">cut</span>(fraud_y_data<span class="sc">$</span>months_as_customer, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">480</span>, <span class="at">by=</span><span class="dv">20</span>), <span class="at">include.lowest=</span><span class="cn">TRUE</span>, <span class="at">right=</span><span class="cn">FALSE</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>fraud_n_data<span class="sc">$</span>duration_group <span class="ot">&lt;-</span> <span class="fu">cut</span>(fraud_n_data<span class="sc">$</span>policy_hold_duration_months, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">320</span>, <span class="at">by=</span><span class="dv">20</span>), <span class="at">include.lowest=</span><span class="cn">TRUE</span>, <span class="at">right=</span><span class="cn">FALSE</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>fraud_n_data<span class="sc">$</span>customer_group <span class="ot">&lt;-</span> <span class="fu">cut</span>(fraud_n_data<span class="sc">$</span>months_as_customer, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">480</span>, <span class="at">by=</span><span class="dv">20</span>), <span class="at">include.lowest=</span><span class="cn">TRUE</span>, <span class="at">right=</span><span class="cn">FALSE</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>heatmap_data_y <span class="ot">&lt;-</span> fraud_y_data <span class="sc">%&gt;%</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(duration_group, customer_group) <span class="sc">%&gt;%</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">'drop'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(<span class="at">key =</span> customer_group, <span class="at">value =</span> n, <span class="at">fill =</span> <span class="dv">0</span>)</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>heatmap_data_n <span class="ot">&lt;-</span> fraud_n_data <span class="sc">%&gt;%</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(duration_group, customer_group) <span class="sc">%&gt;%</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">'drop'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(<span class="at">key =</span> customer_group, <span class="at">value =</span> n, <span class="at">fill =</span> <span class="dv">0</span>)</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>heatmap_data_y_long <span class="ot">&lt;-</span> <span class="fu">gather</span>(heatmap_data_y, <span class="at">key =</span> <span class="st">"customer_group"</span>, <span class="at">value =</span> <span class="st">"n"</span>, <span class="sc">-</span>duration_group)</span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>heatmap_data_n_long <span class="ot">&lt;-</span> <span class="fu">gather</span>(heatmap_data_n, <span class="at">key =</span> <span class="st">"customer_group"</span>, <span class="at">value =</span> <span class="st">"n"</span>, <span class="sc">-</span>duration_group)</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>heatmap_data_y_long<span class="sc">$</span>customer_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(heatmap_data_y_long<span class="sc">$</span>customer_group, <span class="at">levels =</span> <span class="fu">unique</span>(heatmap_data_y_long<span class="sc">$</span>customer_group))</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>heatmap_data_n_long<span class="sc">$</span>customer_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(heatmap_data_n_long<span class="sc">$</span>customer_group, <span class="at">levels =</span> <span class="fu">unique</span>(heatmap_data_n_long<span class="sc">$</span>customer_group))</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>heatmap_data_y_long<span class="sc">$</span>duration_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(heatmap_data_y_long<span class="sc">$</span>duration_group, <span class="at">levels =</span> <span class="fu">unique</span>(heatmap_data_y_long<span class="sc">$</span>duration_group))</span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>heatmap_data_n_long<span class="sc">$</span>duration_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(heatmap_data_n_long<span class="sc">$</span>duration_group, <span class="at">levels =</span> <span class="fu">unique</span>(heatmap_data_n_long<span class="sc">$</span>duration_group))</span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(heatmap_data_y_long, <span class="fu">aes</span>(<span class="at">x =</span> duration_group, <span class="at">y =</span> customer_group, <span class="at">fill =</span> n)) <span class="sc">+</span></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fraud Reported = Y"</span>, <span class="at">x =</span> <span class="st">"Policy Hold Duration Group"</span>, <span class="at">y =</span> <span class="st">"Months as Customer Group"</span>) <span class="sc">+</span></span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(heatmap_data_n_long, <span class="fu">aes</span>(<span class="at">x =</span> duration_group, <span class="at">y =</span> customer_group, <span class="at">fill =</span> n)) <span class="sc">+</span></span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fraud Reported = N"</span>, <span class="at">x =</span> <span class="st">"Policy Hold Duration Group"</span>, <span class="at">y =</span> <span class="st">"Months as Customer Group"</span>) <span class="sc">+</span></span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="960"></p>
 </div>
 </div>
 <p>The two heatmaps provided visualize the frequency of fraud reports (yes or no) against two dimensions: the duration for which a policy has been held (Policy Hold Duration Group) and the number of months a customer has been grouped with a particular profile (Months as Customer Group). The ‘Policy Hold Duration Group’ is represented on the x-axis, with increasing intervals from left to right. The ‘Months as Customer Group’ is shown on the y-axis, also with increasing intervals moving up the axis. The intensity of the color in each cell of the heatmap represents the number of cases, with darker shades indicating a higher number of cases.</p>
@@ -705,26 +1168,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The heatmap for fraud-reported cases (‘Y’) has more variation in the number of cases across the cells, whereas the heatmap for non-fraud cases (‘N’) is more uniform. Neither heatmap shows a clear gradient or pattern that would indicate a trend, such as an increase in fraud reports with longer policy holding periods or months as a customer.</p>
 <p>From this analysis, it can be deduced that there is no strong visual correlation between the duration of policy holding or months as a customer with the likelihood of a fraud report being filed, as high frequencies of fraud reports are scattered across various groups. However, further statistical analysis would be needed to determine if there are significant patterns or correlations that are not immediately visible from the heatmap representation.</p>
 </section>
-<section id="policy-design" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="policy-design"><span class="header-section-number">3.3.2</span> Policy Design</h3>
+<section id="policy-design" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="policy-design"><span class="header-section-number">3.6.2</span> Policy Design</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>incident_severity <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>incident_severity, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Trivial Damage"</span>, <span class="st">"Minor Damage"</span>, <span class="st">"Major Damage"</span>, <span class="st">"Total Loss"</span>))</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>light_red <span class="ot">&lt;-</span> <span class="st">"#FF9999"</span>  </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>light_blue <span class="ot">&lt;-</span> <span class="st">"#9999FF"</span> </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> incident_severity, <span class="at">y =</span> policy_deductable, <span class="at">fill =</span> fraud_reported)) <span class="sc">+</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Y"</span> <span class="ot">=</span> light_red, <span class="st">"N"</span> <span class="ot">=</span> light_blue)) <span class="sc">+</span> </span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Violin Plot of Policy Deductable by Incident Severity"</span>,</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Incident Severity"</span>,</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Policy Deductable"</span>) <span class="sc">+</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>incident_severity <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>incident_severity, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Trivial Damage"</span>, <span class="st">"Minor Damage"</span>, <span class="st">"Major Damage"</span>, <span class="st">"Total Loss"</span>))</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>light_red <span class="ot">&lt;-</span> <span class="st">"#FF9999"</span>  </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>light_blue <span class="ot">&lt;-</span> <span class="st">"#9999FF"</span> </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> incident_severity, <span class="at">y =</span> policy_deductable, <span class="at">fill =</span> fraud_reported)) <span class="sc">+</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Y"</span> <span class="ot">=</span> light_red, <span class="st">"N"</span> <span class="ot">=</span> light_blue)) <span class="sc">+</span> </span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Violin Plot of Policy Deductable by Incident Severity"</span>,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Incident Severity"</span>,</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Policy Deductable"</span>) <span class="sc">+</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The violin plot comparing the policy deductibles across different levels of incident severity, categorized by whether fraud was reported.</p>
@@ -737,67 +1200,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>These patterns might suggest a relationship between the chosen policy deductible and the likelihood of a claim being fraudulent. For example, the higher median deductibles for fraudulent claims in the ‘Trivial Damage’ and ‘Total Loss’ categories might imply that those filing fraudulent claims in these categories are willing to pay a higher deductible, potentially to receive a larger claim payout.</p>
 <p>However, it’s important to note that the violin plot provides a visual estimation of the distributions and should be further investigated with statistical analysis to draw firm conclusions.</p>
 </section>
-<section id="pca" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="pca"><span class="header-section-number">3.3.3</span> PCA</h3>
+<section id="pca" class="level3" data-number="3.6.3">
+<h3 data-number="3.6.3" class="anchored" data-anchor-id="pca"><span class="header-section-number">3.6.3</span> PCA</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>selected_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    months_as_customer,</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    age,</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    policy_deductable,</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    policy_annual_premium,</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">capital_gains =</span> <span class="st">`</span><span class="at">capital.gains</span><span class="st">`</span>,</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">capital_loss =</span> <span class="st">`</span><span class="at">capital.loss</span><span class="st">`</span>,</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    incident_severity,</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    number_of_vehicles_involved,</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    bodily_injuries,</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    witnesses,</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    injury_claim,</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    property_claim,</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    vehicle_claim,</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    fraud_reported</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">incident_severity =</span> <span class="fu">case_when</span>(</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>      incident_severity <span class="sc">==</span> <span class="st">"Trivial Damage"</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>      incident_severity <span class="sc">==</span> <span class="st">"Minor Damage"</span>   <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>      incident_severity <span class="sc">==</span> <span class="st">"Major Damage"</span>   <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>      incident_severity <span class="sc">==</span> <span class="st">"Total Loss"</span>     <span class="sc">~</span> <span class="dv">3</span>,</span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_integer_</span></span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>selected_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    months_as_customer,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    age,</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    policy_deductable,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    policy_annual_premium,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">capital_gains =</span> <span class="st">`</span><span class="at">capital.gains</span><span class="st">`</span>,</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">capital_loss =</span> <span class="st">`</span><span class="at">capital.loss</span><span class="st">`</span>,</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    incident_severity,</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    number_of_vehicles_involved,</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    bodily_injuries,</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    witnesses,</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    injury_claim,</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    property_claim,</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>    vehicle_claim,</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>    fraud_reported</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">incident_severity =</span> <span class="fu">case_when</span>(</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>      incident_severity <span class="sc">==</span> <span class="st">"Trivial Damage"</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>      incident_severity <span class="sc">==</span> <span class="st">"Minor Damage"</span>   <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>      incident_severity <span class="sc">==</span> <span class="st">"Major Damage"</span>   <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>      incident_severity <span class="sc">==</span> <span class="st">"Total Loss"</span>     <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_integer_</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>selected_data_normalized <span class="ot">&lt;-</span> selected_data <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span><span class="fu">scale</span>(.) <span class="sc">%&gt;%</span> as.vector))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>selected_data_normalized <span class="ot">&lt;-</span> selected_data <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span><span class="fu">scale</span>(.) <span class="sc">%&gt;%</span> as.vector))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>pca_result <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(selected_data_normalized[,<span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>], <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">rownames</span>(pca_result<span class="sc">$</span>rotation)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">rainbow</span>(<span class="fu">length</span>(variables)) </span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_pca_biplot</span>(pca_result, </span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">geom =</span> <span class="fu">c</span>(<span class="st">"point"</span>, <span class="st">"arrow"</span>),</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">geom.ind =</span> <span class="st">"point"</span>, </span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha.ind =</span> <span class="fl">0.5</span>,</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">pointsize =</span> <span class="dv">1</span>,</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">labelsize =</span> <span class="dv">3</span>,</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">col.ind =</span> selected_data_normalized<span class="sc">$</span>fraud_reported)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>pca_result <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(selected_data_normalized[,<span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>], <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">rownames</span>(pca_result<span class="sc">$</span>rotation)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">rainbow</span>(<span class="fu">length</span>(variables)) </span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_pca_biplot</span>(pca_result, </span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">geom =</span> <span class="fu">c</span>(<span class="st">"point"</span>, <span class="st">"arrow"</span>),</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">geom.ind =</span> <span class="st">"point"</span>, </span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha.ind =</span> <span class="fl">0.5</span>,</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">pointsize =</span> <span class="dv">1</span>,</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">labelsize =</span> <span class="dv">3</span>,</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">col.ind =</span> selected_data_normalized<span class="sc">$</span>fraud_reported)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+<p><img src="results_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>From this biplot, we can observe:</p>
@@ -807,6 +1270,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Features such as ‘policy_annual_premium’, ‘capital_loss’, and ‘witnesses’ have a strong positive influence on the first principal component, indicating that these variables are significant in separating the claims along this axis.</p>
 <p>There is no distinct separation between fraudulent and non-fraudulent claims, as indicated by the overlap of red circles and blue triangles. This suggests that, based on the PCA, the selected features do not create clear clusters or groupings that separate fraudulent from non-fraudulent claims.</p>
 <p>The lack of clear separation might indicate that the features included in the PCA are not strong predictors of fraud on their own, or that fraud is a complex phenomenon that cannot be easily distinguished by these variables.</p>
+</section>
+<section id="d3graph" class="level3" data-number="3.6.4">
+<h3 data-number="3.6.4" class="anchored" data-anchor-id="d3graph"><span class="header-section-number">3.6.4</span> D3graph</h3>
+<p>We also create a D3 graph which can help us to compare the relationship of “incident_state”, “incident_hour_of_the_day”, “incident_severity” and the “fraud_reported”. You can see this interactive graph in part 4 D3graph!</p>
 
 
 </section>
