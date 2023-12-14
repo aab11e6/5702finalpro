@@ -1,13 +1,55 @@
 # Interactive graph
 
+```{=html}
 <style>
   * {
     font-family: sans-serif;
   }
-</style> 
-
-<div id="plot">
+  
+    .chatbox {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
+</style>
+```
+::: {#plot}
+:::
+```{=html}
+<div>
+<p>States:
+<input type="radio" name="stateline" value="NY" checked>
+NY
+<input type="radio" name="stateline" value="NC">
+NC
+<input type="radio" name="stateline" value="OH">
+OH
+<input type="radio" name="stateline" value="PA">
+PA
+<input type="radio" name="stateline" value="SC">
+SC
+<input type="radio" name="stateline" value="VA">
+VA
+<input type="radio" name="stateline" value="WV">
+WV
+</p>
 </div>
+```
 
+```{=html}
+<div>
+<p>Fraud:
+<input type="radio" name="fraudline" value="Y" checked>
+Yes
+<input type="radio" name="fraudline" value="N">
+No
+</p>
+</div>
+```
+
+```{=html}
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+```
+```{=html}
 <script src="scripts/myscript.js"></script>
+```

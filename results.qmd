@@ -15,7 +15,7 @@ data <- read.csv('insurance_claims.csv', na.strings = c("?", "NA"))
 data <- subset(data, select = -X_c39)
 ```
 
-## 1. Related to Policy
+## Related to Policy
 First, check the distribution of annual premium. 
 ```{r}
 p <- ggplot(data, aes(x = policy_annual_premium, y = fraud_reported)) +
@@ -69,7 +69,7 @@ vcd::mosaic(fraud_reported ~ policy_csl + policy_deductable + premium_category, 
 ```
 From the above plots, we cannot see some obvious relationships between them.
 
-## 2. Demograhic characteristics
+## Demograhic characteristics
 Only two of the features related to demographic characteristics are continuous.
 
 Depicts the distributions of continuous features respectively first.
@@ -90,7 +90,8 @@ rg2 <-ggplot(data, aes(x = months_as_customer, y = as.factor(fraud_reported), fi
        y = "Fraud Reported") +
   theme_ridges()
 
-rg1/rg2
+rg1
+rg2
 ```
 Boxplots:
 ```{r}
@@ -104,7 +105,8 @@ b2 <- ggplot(data, aes(x = months_as_customer, y = fraud_reported)) +
   theme_minimal() +
   labs(x = "Months as customer", y = "Fraud Reported", title = "Months as customer by Fraud Reported")
 
-b1/b2
+b1
+b2
 ```
 ```{r}
 unique(data$insured_occupation)
@@ -170,7 +172,8 @@ c4 <- ggplot(fraud_rates, aes(x = fraud_rate, y = fct_reorder(insured_relationsh
 ```
 
 ```{r}
-c1/c2
+c1
+c2
 ```
 ```{r}
 c3
