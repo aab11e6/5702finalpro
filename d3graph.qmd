@@ -1,13 +1,94 @@
 # Interactive graph
 
+```{=html}
 <style>
   * {
     font-family: sans-serif;
   }
-</style> 
+  
+    .chatbox {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
+</style>
+```
 
-<div id="plot">
+```{=html}
+<div>
+<p>
+This is Interactive graph which depicts the specific started bar chart accroding to your selection. Above the chart, there are options to filter the data by state and by whether or not fraud was involved. 
+</p>
+<p>
+It is meant to display data across different states and fraud reported status. The x-axis of the chart is "incident_hour_of_the_day". However, we divided the 24 hours into 4 categories, which are "0-5", "6-11", "12-17" and "18-23" respectively. The y-axis represents the number of incidents. Every bar in the chart is categorized by the severity of incidents (Total, Major, Minor, Trivial) so it's very convenient for us to compare the severity of incidents.
+</p>
+<p>
+Here's how you might use it:
+</p>
+<p>
+1. Select a State: Choose the state you're interested in by selecting one of the options listed under "States". The abbreviations represent different states, such as NY for New York, NC for North Carolina, etc.
+</p>
+<p>
+2. Choose Fraud Filter: Decide whether you want to filter the incidents by fraud. If you're only interested in incidents involving fraud, select "Yes". If you want to see incidents without fraud, select "No".
+</p>
+<p>
+3. Interpret the Graph: Once the filters are set, the graph will display the data accordingly. Each bar represents the number of incidents, which are further broken down into Total, Major, Minor and Trivial.
+
+</p>
 </div>
+```
 
+```{=html}
+<div>
+<p>States:
+<input type="radio" name="stateline" value="NY" checked>
+NY
+<input type="radio" name="stateline" value="NC">
+NC
+<input type="radio" name="stateline" value="OH">
+OH
+<input type="radio" name="stateline" value="PA">
+PA
+<input type="radio" name="stateline" value="SC">
+SC
+<input type="radio" name="stateline" value="VA">
+VA
+<input type="radio" name="stateline" value="WV">
+WV
+</p>
+</div>
+```
+
+```{=html}
+<div>
+<p>Fraud:
+<input type="radio" name="fraudline" value="Y" checked>
+Yes
+<input type="radio" name="fraudline" value="N">
+No
+</p>
+</div>
+```
+::: {#plot}
+:::
+
+```{=html}
+<div>
+<p>
+Observations & Conclusion:
+</p>
+<p>
+1. Upon examining the distribution of incidents across various states, a clear pattern emerges regarding fraudulent activities. Incidents classified as fraudulent predominantly fall within the 'Major' severity category, with very few, if any, reported as 'Trivial' or 'Total Loss.' This suggests that fraudulent incidents tend to be of significant concern, possibly because they involve substantial financial implications or other serious consequences, warranting their classification as 'Major.'
+</p>
+<p>
+2. The timeframe between 12 PM and 5 PM (12-17) consistently shows a higher frequency of incidents across nearly all states and for incidents not marked as fraudulent. This could indicate a period of increased vulnerability or activity where the likelihood of an incident occurring is higher. In contrast, incidents labeled as fraudulent do not exhibit a strong correlation with any specific time, implying that fraudulent activities are not bound by the same temporal patterns and can occur with relatively uniform probability throughout the day.
+</p>
+</div>
+```
+
+```{=html}
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+```
+```{=html}
 <script src="scripts/myscript.js"></script>
+```
