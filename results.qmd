@@ -851,7 +851,7 @@ ggplot(fraud_rates, aes(x = fraud_rate, y = fct_reorder(as.character(auto_year),
 There isn't a clear trend related to the car's year and the fraud rate; the points are quite dispersed. Some years, like 2004, have significantly higher fraud rates, whereas others, like 2010, are among the lowest. So we can confirm this variable "auto_year" has few relationship with fraud rate.
 
 
-```{r}
+```{r, fig.height=10, fig.width=7}
 fraud_rates <- data %>%
   group_by(auto_make, auto_model ) %>%
   summarize(fraud_rate = mean(fraud_reported == "Y", na.rm = TRUE))
