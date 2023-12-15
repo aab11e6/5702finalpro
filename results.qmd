@@ -4,10 +4,6 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 # Results
 
 ```{r}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE)
-```
-
-```{r}
 library(dplyr)
 library(tidyr)
 library(tibble)
@@ -20,9 +16,11 @@ data <- read.csv('insurance_claims.csv', na.strings = c("?", "NA"))
 data <- subset(data, select = -X_c39)
 ```
 
+We are investigating how to explore the relationship between insurance fraud cases and existing variables. We have divided the variables into five major categories: geographical trends, incident details, policy, demographic characteristics, and vehicle-related factors. First, we will explore the connection between fraud and each of these five categories in the first five sections. Then, in the sixth section, we will attempt to find connections between combined influences of these categories and fraud.
+
 ## Geographical Trends
 
-Here, we primarily focus on two variables: 'policy_state,' which means the state where the insurance policy was issued; and 'incident_state,' which means the state where the incident occurred.
+In this part, we primarily focus on two variables: 'policy_state,' which means the state where the insurance policy was issued; and 'incident_state,' which means the state where the incident occurred.
 
 ```{r}
 data$fraud_reported_numeric <- ifelse(data$fraud_reported == "Y", 1, 0)
@@ -61,14 +59,14 @@ library(ggplot2)
 library(RColorBrewer)
 
 map <- state_choropleth(fraud_rate_by_state, 
-                        title = "Fraud Rate by State", 
+                        title = "Fraud Rate by Incident State", 
                         legend = "Fraud Rate") +
        scale_fill_brewer(palette = "Reds", name = "Fraud Rate")
 
 map + coord_fixed(xlim = c(-85, -70), ylim = c(30, 45))
 ```
 
-This map provides a visual representation of insurance fraud rates across a selection of states, specifically focusing on a certain region in the United States. The data is clearly delimited to just seven states, each shaded according to the severity of the fraud rate as per the accompanying legend.
+This map provides a visual representation of insurance fraud rates across a selection of states where the incident happened, specifically focusing on a certain region in the United States. The data is clearly delimited to just seven states, each shaded according to the severity of the fraud rate as per the accompanying legend.
 
 In the middle portion of the map, we can see that Ohio (OH) stands out with the darkest shade of red, which, according to the legend, signifies the highest fraud rate among the states presented. This darker hue draws immediate attention and could indicate a significant concern regarding insurance fraud within the state.
 
@@ -76,7 +74,7 @@ Surrounding Ohio, the states of Pennsylvania (PA), West Virginia (WV), and Maryl
 
 Further south, Virginia (VA), North Carolina (NC), and South Carolina (SC) are depicted with varying intensities of red. North Carolina and South Carolina, in particular, are colored with a darker tone, which implies that their fraud rates are relatively high, although still not as high as Ohio's. Virginia, on the other hand, shows a lighter shade, indicating a lower fraud rate compared to its southern neighbors.
 
-Each state's coloration on the map is a direct indicator of the rate of insurance fraud, with darker shades correlating to higher rates. This visual distinction serves as a crucial tool for identifying patterns and areas that may require more in-depth analysis or targeted anti-fraud measures.
+Each state's coloration on the map is a direct indicator of the rate of insurance fraud, with darker shades correlating to higher rates.
 
 ```{r}
 data$fraud_reported_numeric <- ifelse(data$fraud_reported == "Y", 1, 0)
@@ -92,14 +90,14 @@ fraud_rate_by_state$policy_state <- tolower(state_map[fraud_rate_by_state$policy
 names(fraud_rate_by_state) <- c("region", "value")
 
 map <- state_choropleth(fraud_rate_by_state, 
-                        title = "Fraud Rate by State", 
+                        title = "Fraud Rate by Policy State", 
                         legend = "Fraud Rate") +
        scale_fill_brewer(palette = "Reds", name = "Fraud Rate")
 
 map + coord_fixed(xlim = c(-95, -80), ylim = c(36, 45))
 ```
 
-Here, only three states are highlighted, indicating the presence of data for these states.
+This graph shows where do these policies come from, and only three states are highlighted, indicating the presence of data for these states.
 
 The state of Ohio (OH) is colored with the darkest shade of red on the map, indicating the highest rate of insurance fraud in relation to where the insurance contracts were issued. The legend to the right suggests that Ohio's fraud rate is between 25.9 and the unspecified upper limit of the scale.
 
@@ -107,7 +105,7 @@ Indiana (IN) is shaded with a medium intensity, suggesting a moderate rate of in
 
 Illinois (IL) appears with the lightest shade of red, signifying the lowest fraud rate among the three states, with its rate falling at or just above 22.8, the lowest value provided on the legend.
 
-This map differs from the first in the number of states included as well as the range of fraud rates represented. The narrower range of rates suggests a more focused analysis or a more uniform distribution of fraud rates across these states. The clear visual contrast between Ohio and the other two states underscores Ohio's prominence in insurance fraud rates for contracts originating within the state. This could prompt further investigation into the factors contributing to Ohio's higher rate of fraud and encourage targeted efforts to address the issue.
+This map differs from the first in the number of states included as well as the range of fraud rates represented. The narrower range of rates suggests a more focused analysis or a more uniform distribution of fraud rates across these states. The clear visual contrast between Ohio and the other two states underscores Ohio's prominence in insurance fraud rates for contracts originating within the state.
 
 ```{r}
 library(ggalluvial)
@@ -151,9 +149,11 @@ But the quantitative characteristics are not really obvious.
 
 ## Incident Details
 
-### capital situation
+In this section, since there are many variables related to incident details, we will still break them down and analyze them one by one. We have divided them into 5 groups, which are capital situation, time, incident type, damage and trustworthiness, and claim amount.
 
-we mainly focus on two variables: 'capital-gains,' which means the capital gains of the insured individual; and 'capital-loss,' which means the capital losses of the insured individual.
+### Capital Situation
+
+In this part, we mainly focus on two variables: 'capital-gains,' which means the capital gains of the insured individual; and 'capital-loss,' which means the capital losses of the insured individual.
 
 ```{r}
 library(ggplot2)
@@ -184,11 +184,11 @@ The most striking aspect of this graph is the density of lines near the zero poi
 
 The steepness of the slope indicates the magnitude of change from gain to loss. Steeper slopes suggest more significant changes. For instance, lines that fall steeply to the right indicate entities that have moved from a position of capital gain to a substantial capital loss. Conversely, lines that rise steeply towards the right suggest entities that have transitioned from a smaller capital gain to a more substantial gain or from a loss to a gain.
 
-This slope graph does not just tell us about individual entities but also speaks to the overall distribution of gains and losses within the dataset. The visual impact of the dense cluster of lines near the center versus the sparse but dramatic lines toward the extremes may prompt further questions about the factors contributing to such a wide disparity in capital gains and losses. Such a graph could be of particular interest to financial analysts, economists, or business strategists looking to understand the volatility of gains and losses within a market or a portfolio of investments.
+This slope graph does not just tell us about individual entities but also speaks to the overall distribution of gains and losses within the dataset. The visual impact of the dense cluster of lines near the center versus the sparse but dramatic lines toward the extremes may prompt further questions about the factors contributing to such a wide disparity in capital gains and losses.
 
 ### Time
 
-Here, we mainly focus on two variables: 'incident_date,' which means the date of the incident; and 'incident_hour_of_the_day,' which means the hour of the day when the incident occurred.
+In this part, we mainly focus on two variables: 'incident_date,' which means the date of the incident; and 'incident_hour_of_the_day,' which means the hour of the day when the incident occurred.
 
 ```{r}
 library(ggplot2)
@@ -240,11 +240,9 @@ Conversely, the graph shows troughs or lower rates of fraud at around the 6th ho
 
 It's challenging to discern a clear trend across the hours, as the graph does not follow a simple or predictable pattern. Instead, it suggests that the fraud rate is subject to multiple influences and varies significantly as the day progresses. This variability would be expected as different types of fraudulent activities might have different 'prime times' depending on various factors such as human behavior, business hours, and monitoring systems in place.
 
-For a more comprehensive analysis, additional context would be needed regarding the types of fraud represented, the mechanisms of fraud detection, and the specifics of the reporting process. Moreover, this data could be correlated with other variables such as transaction volumes, to understand whether peaks in fraud rates correspond with higher activity levels. This graph provides a starting point for identifying when during the day fraud prevention measures might be most necessary or when to be most alert for fraudulent activity.
+### Incident Type
 
-### Type
-
-Focus on three variables: 'incident_type,' which is the type of the incident; 'collision_type,' which is the type of collision, if applicable; and 'incident_severity,' which is the severity of the incident.
+We mainly Focus on three variables: 'incident_type,' which is the type of the incident; 'collision_type,' which is the type of collision, if applicable; and 'incident_severity,' which is the severity of the incident.
 
 ```{r, fig.height=8}
 data1 <- subset(data, !is.na(incident_type) & !is.na(collision_type) & !is.na(incident_severity) & !is.na(fraud_reported))
@@ -310,7 +308,7 @@ There is a visible flow of blue bands (indicating fraud) across various types of
 
 This diagram allows us to observe not just the volume of incidents and fraud within each category, but also the proportions between them. For example, a thick blue band leading from 'Rear Collision' to 'Minor Damage' and then to 'Y' suggests a higher incidence of fraud reported in minor damages resulting from rear collisions.
 
-### damage and trustworthiness
+### Damage And Trustworthiness
 
 This time we focus on four variables to explore their relationship with fraud: 'property_damage', which indicates if there was any property damage; 'bodily_injuries', the number of bodily injuries in the incident; 'police_report_available', which indicates if a police report is available; and 'witnesses', the number of witnesses to the incident.
 
@@ -332,7 +330,7 @@ p1 <- ggplot(fraud_rates, aes(x = property_damage, y = bodily_injuries, fill = f
   geom_tile() + 
   scale_fill_gradient(low = "white", high = "red", labels = scales::percent_format()) +
   theme_minimal() +
-  labs(x = "Bodily Injuries", y = "Property Damage", fill = "Fraud Rate") +
+  labs(title = "Damage Relationship", x = "Bodily Injuries", y = "Property Damage", fill = "Fraud Rate") +
   geom_text(aes(label = scales::percent(fraud_rate)), size = 4, colour = "black")
 
 ```
@@ -353,7 +351,7 @@ p2 <- ggplot(fraud_rates, aes(x = police_report_available, y = witnesses, fill =
   geom_tile() + 
   scale_fill_gradient(low = "white", high = "red", labels = scales::percent_format()) +
   theme_minimal() +
-  labs(x = "police_report_available", y = "witnesses", fill = "Fraud Rate") +
+  labs(title = "Trustworthiness Relationship", x = "police_report_available", y = "witnesses", fill = "Fraud Rate") +
   geom_text(aes(label = scales::percent(fraud_rate)), size = 4, colour = "black")
 
 (p1 | p2)
@@ -367,9 +365,9 @@ The right chart correlates the number of witnesses and the availability of a pol
 
 These charts suggest complex relationships between these variables and the incidence of fraud. The data might imply that certain scenarios, such as more severe accidents with bodily injuries, could be more susceptible to fraudulent claims. Additionally, the presence of a police report doesn't consistently decrease the fraud rate, which could suggest that the mere availability of official documentation is not a strong deterrent to fraud.
 
-### Claim
+### Claim Amount
 
-This time, we are primarily focusing on four numerical variables: total claim amount (total_claim_amount), claim amount for injuries (injury_claim), claim amount for property damage (property_claim), and claim amount for vehicle damage (vehicle_claim).
+This time, we are primarily focusing on four numerical variables: total claim amount, claim amount for injuries, claim amount for property damage, and claim amount for vehicle damage.
 
 ```{r}
 
@@ -400,21 +398,21 @@ p4 <- ggplot(data, aes(x = vehicle_claim, y = fraud_reported)) +
 
 ```
 
-The image contains four box-and-whisker plots, each comparing the distribution of total claim amounts for different categories based on whether fraud was reported ('Y' for yes, 'N' for no).
+The image contains four box-and-whisker plots, each comparing the distribution of total claim amounts for different categories based on whether fraud was reported.
 
 The first plot shows the total claim amount across all categories. The 'Y' fraud reported claims have a higher median and more variability compared to the 'N' non-fraudulent claims. This suggests that fraudulent claims tend to be for higher amounts and have a wider range of claim values.
 
 The second plot focuses on claim amounts for injuries. Here, the difference between the median claim amounts for fraudulent and non-fraudulent claims is less pronounced than in the total claim amount. Still, fraudulent injury claims show a greater range and higher outliers, indicating that fraudulent injury claims can reach higher amounts than typical non-fraudulent claims.
 
-The third plot presents claim amounts for property damage. The fraudulent claims ('Y') again show a higher median than non-fraudulent claims ('N'), with a few high-value outliers suggesting that while most fraudulent property damage claims are similar in amount to non-fraudulent claims, some can be significantly higher.
+The third plot presents claim amounts for property damage. The fraudulent claims again show a higher median than non-fraudulent claims, with a few high-value outliers suggesting that while most fraudulent property damage claims are similar in amount to non-fraudulent claims, some can be significantly higher.
 
 The fourth plot examines claim amounts for vehicle damage specifically. The fraudulent claims show a higher median and greater variability, similar to the first plot, indicating that fraudulent claims for vehicle damage also tend to be higher and more varied than non-fraudulent ones.
 
-In each plot, the presence of outliers in the 'Y' fraud reported groups indicates that while most fraudulent claims are within a certain range, there are exceptional cases with very high claim amounts. These outliers could be indicative of more significant cases of fraud.
+In each plot, the presence of outliers in the fraud reported groups indicates that while most fraudulent claims are within a certain range, there are exceptional cases with very high claim amounts. These outliers could be indicative of more significant cases of fraud.
 
 Overall, these visualizations suggest that fraudulent claims are generally associated with higher claim amounts across various types of damages and that there is a greater range of claim amounts within fraudulent claims compared to non-fraudulent ones. This data can be particularly useful for insurance companies when designing their fraud detection algorithms and risk assessment models.
 
-## Related to Policy
+## Related To Policy
 
 In this part, the variables are related to the policies of the insurances.
 
@@ -428,6 +426,7 @@ p <- ggplot(data, aes(x = policy_annual_premium, y = fraud_reported)) +
 
 p
 ```
+
 In this boxplot, we can see for the "Y" category, there are a few outliers on the higher end, indicating that there are some annual premium amounts significantly higher than the rest. For the "N" category, the median is again just above 1000, similar to the "Y" category, but the IQR is wider than in the "Y" category, indicating more variability in the annual premium amount when fraud is not reported. There are no significant outliers for this category.
 
 From this visual analysis, we can infer that there's a similarity in the median annual premium amounts whether fraud is reported or not. However, when fraud is reported, the annual premium amounts tend to be less variable and with some higher extreme values (outliers). This could suggest that while the typical case for fraud reporting does not involve unusually high premiums, the instances where it does involve significantly higher premiums are noteworthy.
@@ -443,12 +442,12 @@ There are three variables left in this category:
 We create a alluvial and mosaic plot for annual_premium, policy_csl and policy_deductable since umbrella limit has too many values and is not that vital in our research.
 
 We divided the annual premium into 3 categories according to values, which are "low", "medium", "high" respectively:
+
 ```{r}
 breaks <- quantile(data$policy_annual_premium, probs = c(0, 0.25, 0.75, 1), na.rm = TRUE)
 labels <- c("low", "medium", "high")
 data$premium_category <- cut(data$policy_annual_premium, breaks = breaks, labels = labels, include.lowest = TRUE)
 ```
-
 ```{r}
 library(ggalluvial)
 library(alluvial)
@@ -478,6 +477,7 @@ ggplot(data = frequency_data,
        x = "") 
 
 ```
+
 In this alluvial diagram, the relationships among the CSL, Deductable, premium, and whether fraud was reported are depicted.
 
 Then we have some observations:
@@ -495,6 +495,7 @@ library(vcd)
 label_text_size <- gpar(cex = 0.5)
 vcd::mosaic(fraud_reported ~ policy_csl + policy_deductable + premium_category, data, direction = c('h','h','v'), main = "Association between Combined Single Limit , Deductable and Frauds", highlighting_fill=c("lightblue","lightgreen"),gp_text = label_text_size,main_gp = gpar(cex = 1))
 ```
+
 The above mosaic plot illustrates the association between Combined Single Limit, Deductable and Frauds. First of all, the plot suggests that fraud reports are present across all premium categories.
 
 At a glance, there is no immediately obvious pattern indicating a strong association between the deductible amounts and the frequency of fraud claims. However, the largest rectangles (indicating the most common policy types) are those with "no fraud" claims, particularly in the "medium" combined single limit category with lower deductibles.
@@ -503,8 +504,10 @@ There seems to be a somewhat consistent pattern where, for a given combined sing
 
 In summary, the mosaic plot suggests that there is some level of association between policy limits, deductibles, and fraud reports across different premium categories. 
 
-## Demograhic characteristics
-### Continuous variables:
+## Demograhic Characteristics
+
+### Continuous Variables:
+
 Let us firstly focus on two continuous variables related to demographic characteristics: "Age", which represents the age of the claimant. "months_as_customer": Number of months the claimant has been a customer.
 
 Plot the distributions of continuous features by Ridgelines and Boxplots:
@@ -542,6 +545,7 @@ b2 <- ggplot(data, aes(x = months_as_customer, y = fraud_reported)) +
 
 b1/b2
 ```
+
 The two plots provided display statistical visualizations comparing the distributions of two variables — Age and Months as Customer — with respect to whether fraud was reported.
 
 **Ridgelines**
@@ -585,7 +589,7 @@ The ridgelines suggest that there might be a slightly higher propensity for cust
 
 The box plots indicate that there is no substantial difference in the median age or customer tenure between those who report fraud and those who do not. The spread of the age and tenure data is wider for those who do not report fraud, but there are outliers in both cases.
 
-### Discrete variables:
+### Discrete Variables:
 
 In the next step, we will analyze the rest five discrete variables: "insured sex", which is gender of the insured individual, "insured education level", which is  the education level of the insured individual, "insured occupation", which is the occupation of the insured individual, "insured hobbies", which represents hobbies of the insured individual, and "insured relationship", the relationship of the insured individual in his/her family.
 
@@ -602,9 +606,11 @@ ggplot(fraud_rates, aes(x = insured_sex, y = fraud_rate, fill = insured_sex)) +
        y = "Fraud Rate (%)") +
   theme_minimal()
 ```
+
 The bar chart shows the comparison of fraud rates between two sexes. The fraud rate for females is shown to be less than 20% and that of males appears to be slightly above 20%.
 
 This suggests that, according to the data presented, males have a slightly higher fraud rate than females.
+
 ```{r}
 library(Lock5withR)
 library(forcats)
@@ -649,7 +655,6 @@ c4 <- ggplot(fraud_rates, aes(x = fraud_rate, y = fct_reorder(insured_relationsh
   ylab("") +
   theme_linedraw()
 ```
-
 ```{r}
 c1/
 c4
@@ -657,6 +662,7 @@ c4
 c3
 c2
 ```
+
 **Fraud Rate by Education Levels**:
 
 The dot plot shows fraud rates across different levels of education. The levels are arranged vertically with the fraud rate on the horizontal axis. Here are some observations:
@@ -697,6 +703,7 @@ Hobbies like 'chess' and 'cross-fit' have some of the highest fraud rates.The lo
 From the above plots, let us mainly focus on four discrete variables: "insured_education_level", "insured_occupation", "insured_hobbies" and "insured_relationship".
 
 Since education level and occupation have a relatively strong relationship in our real life, so we try a alluvium figure regarding insured_education_level, insured_occupation and fraud_reported to see if there is any association.
+
 ```{r}
 selected_data <- data %>% 
   select(insured_education_level, insured_occupation, fraud_reported)
@@ -723,6 +730,7 @@ ggplot(data = frequency_data,
   labs(title = "Relationships among Education Level, Occupation and Fraud Reported",
        x = "") 
 ```
+
 Here are some observations:
 
 Certain occupations, like "exec-managerial" and "prof-specialty," seem to have a larger number of connections with higher education levels like "MD," "Masters," and "PhD."
@@ -748,7 +756,7 @@ h1 <- ggplot(fraud_rates, aes(x = insured_education_level, y = insured_occupatio
   geom_tile() + 
   scale_fill_gradient(low = "white", high = "pink", labels = scales::percent_format()) +
   theme_minimal() +
-  labs(x = "Education Level", y = "Occupation", fill = "Fraud Rate") +
+  labs(title = "Relationship between Occupation and Education", x = "Education Level", y = "Occupation", fill = "Fraud Rate") +
   geom_text(aes(label = scales::percent(fraud_rate)), size = 4, colour = "black")
 h1
 
@@ -765,7 +773,7 @@ h2 <- ggplot(fraud_rates, aes(x = insured_relationship, y = insured_occupation, 
   geom_tile() + 
   scale_fill_gradient(low = "white", high = "pink", labels = scales::percent_format()) +
   theme_minimal() +
-  labs(y = "Occupation", x = "Family Relationship", fill = "Fraud Rate") +
+  labs(title = "Relationship between Occupation and Family", y = "Occupation", x = "Family Relationship", fill = "Fraud Rate") +
   geom_text(aes(label = scales::percent(fraud_rate)), size = 4, colour = "black")
 h2
 ```
@@ -781,10 +789,11 @@ h3 <- ggplot(fraud_rates, aes(x = insured_education_level, y = insured_relations
   geom_tile() + 
   scale_fill_gradient(low = "white", high = "pink", labels = scales::percent_format()) +
   theme_minimal() +
-  labs(x = "Education Level", y = "Family Relationship", fill = "Fraud Rate") +
+  labs(title = "Relationship between Family and Education", x = "Education Level", y = "Family Relationship", fill = "Fraud Rate") +
   geom_text(aes(label = scales::percent(fraud_rate)), size = 4, colour = "black")
 h3
 ```
+
 Above are heatmaps that display the fraud rates across different occupations, education levels, and family relationships, which are an excellent way to visualize complex data and identify patterns or anomalies across multiple categories. The color intensity represents the magnitude of the fraud rate, with darker shades typically indicating higher rates.
 
 **Fraud Rate by Occupation and Education Level**
@@ -823,7 +832,7 @@ The data suggests that fraud rates are influenced by a complex interplay of occu
 
 3. Family relationship status also influences fraud rates, with statuses such as "wife" and "unmarried" showing higher rates in certain contexts.
 
-## Vehicle related
+## Vehicle Related
 
 ```{r}
 fraud_rates <- data %>%
@@ -836,6 +845,7 @@ ggplot(fraud_rates, aes(x = fraud_rate, y = fct_reorder(as.character(auto_year),
   ylab("") +
   theme_linedraw()
 ```
+
 **Fraud Rate by Auto Year**
 
 There isn't a clear trend related to the car's year and the fraud rate; the points are quite dispersed. Some years, like 2004, have significantly higher fraud rates, whereas others, like 2010, are among the lowest. So we can confirm this variable "auto_year" has few relationship with fraud rate.
@@ -856,6 +866,7 @@ ggplot(fraud_rates, aes(x = fraud_rate, y = reorder(auto_model, fraud_rate))) +
   theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank())
 
 ```
+
 **fraud_rate of auto models facet by auto make**
 
 From the plot of fraud_rate to auto models facet by auto make, Jeep appears to have the lowest fraud rate among the listed makes. The models of Mercedes and Nissan have the relatively highest fraud rates.
@@ -866,8 +877,7 @@ Most models have a fraud rate below 20%.
 
 The specific brands and models seem to have higher possibility to be reported to be fraud (Mercedes ML350 and BMW X6), which are always expensive cars. Thus the individuals can get higher pay by the frauds.
 
-
-## combined relationship
+## Combined Relationship
 
 ### Time
 
@@ -883,7 +893,6 @@ data$policy_bind_date <- mdy(data$policy_bind_date)
 
 data$policy_hold_duration_months <- interval(start = data$policy_bind_date, end = data$incident_date) %/% months(1)
 ```
-
 ```{r, fig.height=8, fig.width=10}
 library(reshape2)
 
@@ -918,13 +927,13 @@ heatmap_data_n_long$duration_group <- factor(heatmap_data_n_long$duration_group,
 p1 <- ggplot(heatmap_data_y_long, aes(x = duration_group, y = customer_group, fill = n)) +
   geom_tile() +
   scale_fill_gradient(low = "white", high = "red") +
-  labs(title = "Fraud Reported = Y", x = "Policy Hold Duration Group", y = "Months as Customer Group") +
+  labs(title = "Heatmap about Fraud Reported = Y", x = "Policy Hold Duration Group", y = "Months as Customer Group") +
   theme_minimal()
 
 p2 <- ggplot(heatmap_data_n_long, aes(x = duration_group, y = customer_group, fill = n)) +
   geom_tile() +
   scale_fill_gradient(low = "white", high = "blue") +
-  labs(title = "Fraud Reported = N", x = "Policy Hold Duration Group", y = "Months as Customer Group") +
+  labs(title = "Heatmap about Fraud Reported = N", x = "Policy Hold Duration Group", y = "Months as Customer Group") +
   theme_minimal()
 
 library(patchwork)
@@ -1031,7 +1040,7 @@ pca_result <- prcomp(selected_data_normalized[,1:13], scale. = TRUE)
 variables <- rownames(pca_result$rotation)
 colors <- rainbow(length(variables)) 
 
-fviz_pca_biplot(pca_result, 
+biplot <- fviz_pca_biplot(pca_result, 
                 geom = c("point", "arrow"),
                 geom.ind = "point", 
                 alpha.ind = 0.5,
@@ -1040,6 +1049,7 @@ fviz_pca_biplot(pca_result,
                 labelsize = 3,
                 col.ind = selected_data_normalized$fraud_reported)
 
+biplot + ggtitle("Biplot about main features")
 ```
 
 From this biplot, we can observe:
@@ -1057,4 +1067,5 @@ There is no distinct separation between fraudulent and non-fraudulent claims, as
 The lack of clear separation might indicate that the features included in the PCA are not strong predictors of fraud on their own, or that fraud is a complex phenomenon that cannot be easily distinguished by these variables.
 
 ### D3graph
-We also create a D3 graph which can help us to compare the relationship of "incident_state", "incident_hour_of_the_day", "incident_severity" and the "fraud_reported". You can see this interactive graph in part 4 D3graph!
+
+We also create a D3 graph which can help us to compare the relationship of "incident_state", "incident_hour_of_the_day", "incident_severity" and the "fraud_reported". You can see this interactive graph in chapter 4 D3graph!
