@@ -822,7 +822,7 @@ In contrast, "handlers-cleaners" with "own-child" family status has a 0% fraud r
 
 Occupations such as "exec-managerial" and "craft-repair" show a high fraud rate with several family relationship statuses.
 
-**Summary*
+**Summary**
 
 The data suggests that fraud rates are influenced by a complex interplay of occupation, education level, and family relationship status:
 
